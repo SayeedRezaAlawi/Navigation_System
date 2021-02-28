@@ -26,8 +26,12 @@ public:
 	void connectToWpDatabase(CWpDatabase* pWpDB);
 	void addWaypoint(std::string WpName);
 	void addPoi(std::string namePoi);
+	void addPoi(std::string namePoi, std::string afterWp);
 	double getDistanceNextPoi(CWaypoint const& wp, CPOI& poi);
 	void print();
+	CRoute& operator = (const CRoute& route);
+	CRoute& operator += (const std::string name);
+	CRoute operator + (const CRoute& route);
 	virtual ~CRoute();
 private:
 //	const CWaypoint* m_pWaypoint;

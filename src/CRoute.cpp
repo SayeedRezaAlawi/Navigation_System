@@ -111,5 +111,65 @@ void CRoute::print() {
 	}
 }
 
+void CRoute::addPoi(std::string namePoi, std::string afterWp) {
+	bool MatchFound = false;
+	CPOI* ptrTpPoi;
+	if(m_pPoiDatabase != NULL)
+	{
+		ptrTpPoi = m_pPoiDatabase->getPointerToPoi(namePoi);
+		if(ptrTpPoi != NULL){
+			CWayPointList::reverse_iterator re_it;
+
+			for(re_it = m_pRoute.rbegin(); re_it != m_pRoute.rend() && !MatchFound; ++re_it){
+				if(((*re_it)->getName() == afterWp) && (m_pPoiDatabase->getPointerToPoi((*re_it)->getName()) == NULL)){
+					m_pRoute.insert(re_it.base(),ptrTpPoi);
+					m_nextPoi++;
+					MatchFound=true;
+					break;
+				}
+			}
+			if(!MatchFound){
+				std::cout<<" ERROR:: The afterWp "<<afterWp<<" not found in DB"<<std::endl;
+				m_pRoute.push_back(ptrTpPoi);
+				m_nextPoi++;
+			}
+	}
+	else {
+		std::cout<<"ERROR: "<<namePoi<< "  POI not found in database, POI not in the POOL."<<std::endl;
+	}
+	}
+	else {
+		std::cout<<" POI Database not connected"<<std::endl;
+	}
+}
+
+CRoute& CRoute::operator +=(const std::string name) {
+	addWaypoint(name);
+	addPoi(name, name);
+	return *this;
+}
+
+CRoute& CRoute::operator =(const CRoute &route) {
+	this->m_nextPoi = route.m_nextPoi;
+	this->m_nextWp = route.m_nextWp;
+	this->m_pPoiDatabase = route.m_pPoiDatabase;
+	this->m_pRoute = route.m_pRoute;
+	this->m_pWpDatabase = route.m_pWpDatabase;
+	return *this;
+}
+
+CRoute CRoute::operator +(const CRoute &route) {
+	CRoute newRoute;
+	if(route.m_pPoiDatabase != NULL && route.m_pWpDatabase != NULL){
+		if(this->m_pPoiDatabase == route.m_pPoiDatabase && this->m_pWpDatabase == route.m_pWpDatabase){
+			newRoute.m_nextWp = this->m_nextWp + route.m_nextWp;
+			newRoute.m_nextPoi = this->m_nextPoi + route.m_nextPoi;
+			newRoute.m_pRoute.insert(newRoute.m_pRoute.end(),route.m_pRoute.begin(),route.m_pRoute.end());
+			newRoute.m_pRoute.insert(newRoute.m_pRoute.end(), this->m_pRoute.begin(), this->m_pRoute.end());
+		}
+	}
+	return newRoute;
+}
+
 CRoute::~CRoute() {
 }
