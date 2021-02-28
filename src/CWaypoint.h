@@ -14,6 +14,7 @@
 
 #define EARTH_RADIUS 6378.17
 #define LOGLEVEL 0
+#define SHOW_DEBUG_DATA 1
 #define DEGREE 0
 #define MMSS 0
 #define PI 3.14159265358979323846
@@ -37,12 +38,15 @@ public:
 	const std::string& getName() const;
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 	double calculateDistance(const CWaypoint& wp);
-	void print(int format);
+	virtual void print(int format);
 	virtual ~CWaypoint();
-private:
+protected:
 	void transformLongitude2degmmss(int& deg, int& mm, double& ss);
 	void transformLatitude2degmmss(int& deg, int& mm, double& ss);
+	friend std::ostream& operator << (std::ostream& out, CWaypoint& wp);
 };
+
+//std::ostream& operator << (std::ostream& out, CWaypoint& wp);
 /********************
 **  CLASS END
 *********************/

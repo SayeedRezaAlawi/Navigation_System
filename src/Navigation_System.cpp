@@ -16,7 +16,8 @@ int main() {
 	CNavigationSystem navObj;
 	navObj.run();
 //	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-//	CWaypoint wp1 = CWaypoint{"WP1",94,123};
+//	CWaypoint wp1 = CWaypoint{"WP1",20,123};
+//	std::cout << wp1;
 //	CWaypoint Amsterdam = CWaypoint{"Amsterdam",52.3676,4.9041};
 //	Amsterdam.print(1);
 //	Amsterdam.print(2);

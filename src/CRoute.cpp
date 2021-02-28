@@ -167,6 +167,13 @@ CRoute CRoute::operator +(const CRoute &route) {
 			newRoute.m_pRoute.insert(newRoute.m_pRoute.end(),route.m_pRoute.begin(),route.m_pRoute.end());
 			newRoute.m_pRoute.insert(newRoute.m_pRoute.end(), this->m_pRoute.begin(), this->m_pRoute.end());
 		}
+		else{
+			std::cout << "Routed are not connected to the same Databases." << std::endl;
+			newRoute =CRoute();
+	}
+	}
+	else{
+		std::cout << "Databases are not connected" << std::endl;
 	}
 	return newRoute;
 }
