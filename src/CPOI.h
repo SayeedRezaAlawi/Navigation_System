@@ -24,7 +24,8 @@ public:
 		BUSSTATION,
 		SCHOOL,
 		MONUMENT,
-		DEFAULT
+		DEFAULT,
+		MaxPOI
 	};
 	typedef enum poi_type t_poi;
 

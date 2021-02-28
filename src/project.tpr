@@ -14,21 +14,21 @@ Root.2.srcControlProject=
 Version=3.0
 projectfile.encoding=Cp1252
 [editor]
-recent.file.0=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CWaypoint.h
-recent.file.1=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\Class1.h
-recent.file.2=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\H_EmployeeLeaveController.cs
-recent.file.3=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\H_EmployeeController.cs
-recent.file.4=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\BaseController.cs
-recent.file.5=D:\\H_da\\Winter Semester\\MMwp04 Advanced Software Design Techniques\\Lectures\\Lecture 7 - Interface Design\\070_FunctionPointer\\070_FunctionPointer\\myCode\\CFlashSystemFunctor.h
-recent.file.6=D:\\50_HDA\\60_Lehre\\40_Vorlesungen\\25_ADT\\20_Lecture\\_work\\070_FunctionPointer\\myCode\\CFlashSystemFunctor.h
-recent.file.7=D:\\50_HDA\\60_Lehre\\40_Vorlesungen\\25_ADT\\20_Lecture\\_work\\070_FunctionPointer\\myCode\\CFunctorErrorHandler.h
-recent.file.8=D:\\50_HDA\\60_Lehre\\40_Vorlesungen\\25_ADT\\20_Lecture\\_work\\070_FunctionPointer\\myCode\\CFlashFileSystem.h
-recent.file.9=D:\\50_HDA\\60_Lehre\\40_Vorlesungen\\25_ADT\\20_Lecture\\_work\\070_FunctionPointer\\myCode\\CApplication.h
+recent.file.0=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CNavigationSystem.h
+recent.file.1=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CRoute.h
+recent.file.2=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CPoiDatabase.h
+recent.file.3=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CGPSSensor.h
+recent.file.4=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CPOI.h
+recent.file.5=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\CWaypoint.h
+recent.file.6=D:\\hda\\Summer_Semester2021\\APT\\Navigation_System\\Navigation_System\\src\\Class1.h
+recent.file.7=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\H_EmployeeLeaveController.cs
+recent.file.8=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\H_EmployeeController.cs
+recent.file.9=D:\\WebFlow\\HR_Project\\HR\\HR\\Controllers\\BaseController.cs
 [workspace]
 Developer.CodingWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,5,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DebugWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,1,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
-Developer.GraficClass={{0,2,-1,0,0,0,0,1,0,1,1,47,75,29,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,47,75,29,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,52,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.GraficClass={{0,2,-1,0,0,0,0,1,0,1,1,98,75,29,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,98,75,29,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,100,50,29,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,52,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={GraficClass,DesignWorkspace,CodingWorkspace,DebugWorkspace}
 [vcs]
 provider.class=CVS LAN

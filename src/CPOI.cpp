@@ -8,6 +8,18 @@
 #include "CPOI.h"
 #include <iostream>
 
+const char* POIType_ar[] = {
+		"Restaurant",
+		"Touristic",
+		"GasStation",
+		"University",
+		"Krankenhaus",
+		"BusStation",
+		"School",
+		"Monument",
+		"NO POI exists",
+};
+
 CPOI::CPOI(t_poi type, std::string name, std::string description,
 		double latitude, double longitude){
 			this->m_type = type;
@@ -20,7 +32,7 @@ CPOI::CPOI(t_poi type, std::string name, std::string description,
 void CPOI::print() {
 	std::cout << "Point of Interest" << std::endl;
 	std::cout << "=================" << std::endl;
-	std::cout << " of type " << this->m_type << " : " << this->m_description << std::endl;
+	std::cout << " of type " << POIType_ar[m_type] << " : " << this->m_description << std::endl;
 	CWaypoint::print(2);
 }
 
