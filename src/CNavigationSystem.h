@@ -14,6 +14,8 @@
 #include "CWpDatabase.h"
 #include "CPOI.h"
 #include "CWaypoint.h"
+#include "iostream"
+#include "CCSV.h"
 
 class CNavigationSystem {
 private:
@@ -21,12 +23,16 @@ private:
 	CRoute m_route;
 	CPoiDatabase m_PoiDatabase;
 	CWpDatabase m_WpDatabase;
+	CCSV m_CSV;
 	void enterRoute();
 	void printRoute();
 	void printDistanceCurPosNextPoi();
 public:
 	CNavigationSystem();
 	void run();
+	void createDatabases();
+	void writeToFile();
+	void readFromFile();
 	virtual ~CNavigationSystem();
 };
 

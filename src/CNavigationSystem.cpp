@@ -79,6 +79,15 @@ void CNavigationSystem::printDistanceCurPosNextPoi() {
 	std::cout << "closest distance from entered way point to closest Point of interest = " << closestPOIDistance << std::endl;
 }
 
+void CNavigationSystem::createDatabases() {
+}
+
+void CNavigationSystem::writeToFile() {
+}
+
+void CNavigationSystem::readFromFile() {
+}
+
 CNavigationSystem::~CNavigationSystem() {
 	// TODO Auto-generated destructor stub
 }
