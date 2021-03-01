@@ -1,0 +1,7 @@
+BUSSTATION;BusStation;Pfnor-Strasse;53.24;49.91
+RESTAURANT;Contel;Budget Hotel in Darmstadt;33.61;43.07
+SCHOOL;H_DA;Hochschule Darmstadt - University of Applied Sciences;72.45;62.35
+MONUMENT;Kirche;The oldest Kirche in Darmstadt;65.2;12.67
+KRANKENHAUS;Krankenhaus;TK- Always for you;53.18;73.32
+RESTAURANT;Pizza Hut;Best pizza in darmstadt;13.45;23.65
+UNIVERSITY;Kabul University;Central University;63.45;83.65

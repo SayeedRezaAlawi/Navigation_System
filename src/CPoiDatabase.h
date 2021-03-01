@@ -17,9 +17,11 @@ public:
 	CPoiDatabase();
 	void addPoi(CPOI::t_poi type,std::string name, std::string descrioption, double latitude, double longitude);
 	CPOI* getPointerToPoi(std::string name );
+	POI_map getPois() const;
+	void print();
+	void clearDb();
 	virtual ~CPoiDatabase();
 private:
-//	int m_noPoi=0;
 	POI_map m_POI;
 };
 

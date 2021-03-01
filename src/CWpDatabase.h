@@ -17,10 +17,14 @@ public:
 	CWpDatabase();
 	void addWaypoint(CWaypoint const&  Wp);
 	CWaypoint* getPointerToWp(std::string WpName );
+	Waypoin_map getWaypoints() const;
+//	void write(std::ostream out);
+//	void read(std::istream in);
 	void print();
+	void clearDb();
 	virtual ~CWpDatabase();
 private:
-	Waypoin_map m_Waypoint;
+	Waypoin_map m_Waypoints;
 };
 
 #endif /* CWPDATABASE_H_ */

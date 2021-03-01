@@ -12,6 +12,13 @@
 #include "CPersistentStorage.h"
 
 class CCSV: public CPersistentStorage {
+private:
+	std::string m_WpFileName;
+	std::string m_PoiFileName;
+	void readWpObj(std::string line, std::string& name,double& latitude,double& longitude);
+	void readPoiObj(const std::string& line, CPOI::t_poi& type,std::string& name, std::string& descrioption,
+			double& latitude, double& longitude);
+	bool setPoiType(std::string poitype,CPOI::t_poi &poi_type);
 public:
 	CCSV();
 	void setMediaName(std::string name);

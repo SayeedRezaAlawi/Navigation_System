@@ -30,5 +30,20 @@ CPOI* CPoiDatabase::getPointerToPoi(std::string name) {
 	return PtrToPoi;
 }
 
+CPoiDatabase::POI_map CPoiDatabase::getPois() const {
+	return m_POI;
+}
+
+void CPoiDatabase::print() {
+	for(auto& poi:m_POI){
+		std::cout << poi.second.poiTypeToString()<< ";" << poi.second.getName() << ";" << poi.second.getDescription() << ";"
+				<< poi.second.getLatitude() << ";" << poi.second.getLongitude() << std::endl;
+	}
+}
+
+void CPoiDatabase::clearDb() {
+	m_POI.clear();
+}
+
 CPoiDatabase::~CPoiDatabase() {
 }

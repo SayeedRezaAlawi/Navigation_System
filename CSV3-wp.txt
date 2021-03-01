@@ -1,0 +1,4 @@
+Darmstadt;13.45;34.67
+Frankfurt;89.09;12.56
+Munchen;78.98;45.67
+Stuttgart;12.04;69.47

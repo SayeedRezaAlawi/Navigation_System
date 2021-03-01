@@ -33,6 +33,9 @@ public:
 	CPOI(t_poi type, std::string name, std::string description, double latitude, double longitude);
 	void print();
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude, t_poi& type, std::string& description);
+	t_poi getType();
+	std::string getDescription();
+	std::string poiTypeToString();
 	virtual ~CPOI();
 private:
 	t_poi m_type;

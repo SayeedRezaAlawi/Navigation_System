@@ -16,6 +16,7 @@
 #include "CWaypoint.h"
 #include "iostream"
 #include "CCSV.h"
+#include "CPersistentStorage.h"
 
 class CNavigationSystem {
 private:
@@ -24,6 +25,7 @@ private:
 	CPoiDatabase m_PoiDatabase;
 	CWpDatabase m_WpDatabase;
 	CCSV m_CSV;
+//	CPersistentStorage* m_pPersistentStorgage;
 	void enterRoute();
 	void printRoute();
 	void printDistanceCurPosNextPoi();
