@@ -13,8 +13,15 @@ using namespace std;
 
 int main() {
 
-	CNavigationSystem navObj;
-	navObj.run();
+//	CNavigationSystem navObj;
+//	navObj.run();
+	CWpDatabase waypointDb;
+	CPoiDatabase poiDb;
+	CCSV csv;
+	csv.setMediaName("CSV4");
+	csv.readData(waypointDb, poiDb,CPersistentStorage::REPLACE);
+	waypointDb.print();
+	poiDb.print();
 //	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 //	CWaypoint wp1 = CWaypoint{"WP1",20,123};
 //	std::cout << wp1;

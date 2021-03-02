@@ -8,6 +8,7 @@
 #include "CCSV.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 CCSV::CCSV() {
 	// TODO Auto-generated constructor stub
@@ -63,6 +64,7 @@ bool CCSV::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,CPersistentStor
 	double latitude,longitude;
 	CPOI::t_poi type;
 	std::string descrioption;
+	int lineAddress=0;
 
 	bool isFileReadSuccessful = false;
 	std::ifstream file;
@@ -72,34 +74,62 @@ bool CCSV::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,CPersistentStor
 	if(file.is_open()){
 		while(true){
 			std::getline(file,line);
+			lineAddress++;
 			if (file.eof() || line == "") {
 				break;
 			}
-			readWpObj(line, name, latitude, longitude);
-			waypointDb.addWaypoint(CWaypoint{name,latitude,longitude});
+			if(std::count(line.begin(),line.end(),';') < 2 && std::count(line.begin(),line.end(),',') == 0)
+			{
+				std::cout << "Error:" << errorToString(CCSV::TOOFEWFIELDS)<< " in line " <<  lineAddress << " " <<  line << std::endl;
+				continue;
+			}
+			if(std::count(line.begin(),line.end(),',') > 0)
+			{
+				std::cout << "Error:" << errorToString(CCSV::WRONGDELIMITER) << " in line " <<  lineAddress << " " <<  line << std::endl;
+				continue;
+			}
+			else{
+				readWpObj(line, name, latitude, longitude);
+				waypointDb.addWaypoint(CWaypoint{name,latitude,longitude});
+			}
 		}
 		isFileReadSuccessful =true;
 		file.close();
 	}
 	else{
-		std::cout << "EROR: waypoint File read failed"<<std::endl;
+		std::cout << "Error:" << errorToString(CCSV::READWPFAILD ) <<std::endl;
 	}
 	isFileReadSuccessful = false;
+	lineAddress = 0;
 	file.open(m_PoiFileName);
 	if(file.is_open()){
 		while(true){
 			std::getline(file,line);
+			lineAddress++;
 			if (file.eof() || line == "") {
 				break;
 			}
-			readPoiObj(line, type, name, descrioption, latitude, longitude);
-			poiDb.addPoi(type,name,descrioption, latitude, longitude);
+			if(std::count(line.begin(),line.end(),';') < 4 && std::count(line.begin(),line.end(),',') == 0)
+			{
+				std::cout << "Error:" << errorToString(CCSV::TOOFEWFIELDS) << " in line " <<  lineAddress << " " << line << std::endl;
+				continue;
+			}
+			if(std::count(line.begin(),line.end(),',') > 0)
+			{
+				std::cout << "Error:" << errorToString(CCSV::WRONGDELIMITER )<< " in line " <<  lineAddress << " " <<line << std::endl;
+				continue;
+			}
+			else{
+				readPoiObj(line, type, name, descrioption, latitude, longitude);
+				poiDb.addPoi(type,name,descrioption, latitude, longitude);
+			}
+
 		}
 		isFileReadSuccessful =true;
 		file.close();
 	}
 	else{
-		std::cout << "EROR: POI File read failed"<<std::endl;
+		std::cout << "Error:" << errorToString(CCSV::READPOIFAIELD ) <<std::endl;
 	}
 	return isFileReadSuccessful;
 }
@@ -169,4 +199,15 @@ bool CCSV::setPoiType(std::string poitype,CPOI::t_poi &poi_type){
 	}
 
 return result;
+}
+
+std::string CCSV::errorToString(errorType_t error) {
+	std::string result;
+	switch((int) error){
+	case 0: result = "WRONGDELIMITER";break;
+	case 1: result = "TOOFEWFIELDS";break;
+	case 2: result = "READPOIFAIELD";break;
+	case 3: result = "READWPFAILD";break;
+	}
+	return result;
 }
