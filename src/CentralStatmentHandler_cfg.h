@@ -28,6 +28,7 @@ const STATE_Json_TransitionTable_t STATE_Json_Transition_Table = {
 	{ APT::CJsonToken::STRING,  		WAIT_FOR_VALUESEPARATOR,	WAIT_FOR_ATTRIBUTENAME,     Json_dispatch_AttributeName    	},
 	{ APT::CJsonToken::BEGIN_OBJECT, 	WAIT_FOR_VALUESEPARATOR,	WAIT_FOR_BEGINOBJECT,  					0					},
 	{ APT::CJsonToken::END_ARRAY, 		WAIT_FOR_ENDOBJECT,   		WAIT_FOR_ENDARRAY,  					0					},
+	{ APT::CJsonToken::VALUE_SEPARATOR, WAIT_FOR_ENDARRAY,   		WAIT_FOR_FIRSTTOKEN,  					0					},
 	{ APT::CJsonToken::END_OBJECT, 		WAIT_FOR_ENDARRAY,   		IDLE,  									0					},
 };
 #endif /* CENTRALSTATMENTHANDLER_CFG_H_ */

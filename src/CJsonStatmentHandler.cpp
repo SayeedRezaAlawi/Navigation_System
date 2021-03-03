@@ -43,11 +43,10 @@ CJsonStatmentHandler::CJsonStatmentHandler() {
 }
 
 
-
 void CJsonStatmentHandler::Json_processEvent(APT::CJsonToken* token) {
 	m_token = token;
 	m_event = token->getType();
-	int tableSize = 17;
+	int tableSize = 18;
 	for (uint16_t i = 0; i < tableSize; i++)
 	{
 		if ((*m_transitionTable)[i].event == m_event)

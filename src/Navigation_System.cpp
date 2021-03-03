@@ -29,7 +29,7 @@ int main() {
 //	waypointDb.print();
 //	poiDb.print();
 	CJsonStatmentHandler handler;
-	string fileName = "Json-poi.txt";
+	string fileName = "Json-both.txt";
 	string line;
 	ifstream file;
 	file.open(fileName);
@@ -45,6 +45,10 @@ int main() {
 //			cout << "current Token is: " << token->str() << endl;
 			handler.Json_processEvent(token);
 		}
+	}
+	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();
+	for(auto& wp:wplist){
+		std::cout << wp;
 	}
 	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
 	for(auto& poi:poilist){
