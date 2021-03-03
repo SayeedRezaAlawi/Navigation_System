@@ -21,6 +21,12 @@ unsigned int CJsonStatmentHandler::m_noReadAttribute = 0;
 std::list<CWaypoint> CJsonStatmentHandler::m_WpList;
 std::list<CPOI> CJsonStatmentHandler::m_PoiList;
 
+JsonParser_ActionPtr_t CJsonStatmentHandler::m_actionFct = 0;
+state_t CJsonStatmentHandler::m_fromState = IDLE;
+state_t CJsonStatmentHandler::m_toState = IDLE;
+APT::CJsonToken::TokenType CJsonStatmentHandler::m_event = APT::CJsonToken::BEGIN_OBJECT;
+const STATE_Json_TransitionTable_t* CJsonStatmentHandler::m_transitionTable = (STATE_Json_TransitionTable_t*)&STATE_Json_Transition_Table;
+
 void Json_dispatch_DbName(){
 	CJsonStatmentHandler::Json_dispatch_DbName();
 }
@@ -35,11 +41,11 @@ void Json_dispatch_AttributeValue()
 }
 
 CJsonStatmentHandler::CJsonStatmentHandler() {
-	m_fromState = IDLE;
-	m_toState = IDLE;
-	m_actionFct = 0;
-	m_event = APT::CJsonToken::BEGIN_OBJECT;
-	m_transitionTable = (STATE_Json_TransitionTable_t*)&STATE_Json_Transition_Table;
+//	m_fromState = IDLE;
+//	m_toState = IDLE;
+//	m_actionFct = 0;
+//	m_event = APT::CJsonToken::BEGIN_OBJECT;
+//	m_transitionTable = (STATE_Json_TransitionTable_t*)&STATE_Json_Transition_Table;
 }
 
 

@@ -28,7 +28,7 @@ int main() {
 //	csv.readData(waypointDb, poiDb,CPersistentStorage::REPLACE);
 //	waypointDb.print();
 //	poiDb.print();
-	CJsonStatmentHandler handler;
+//	CJsonStatmentHandler handler;
 	string fileName = "Json-both.txt";
 	string line;
 	ifstream file;
@@ -43,7 +43,8 @@ int main() {
 		}
 		else{
 //			cout << "current Token is: " << token->str() << endl;
-			handler.Json_processEvent(token);
+//			handler.Json_processEvent(token);
+			CJsonStatmentHandler::Json_processEvent(token);
 		}
 	}
 	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();

@@ -26,15 +26,15 @@ private:
 	static std::list<CWaypoint> m_WpList;
 	static std::list<CPOI> m_PoiList;
 
-	JsonParser_ActionPtr_t m_actionFct;
-	state_t m_fromState;
-	state_t m_toState;
-	APT::CJsonToken::TokenType m_event;
-	const STATE_Json_TransitionTable_t* m_transitionTable;
+	static JsonParser_ActionPtr_t m_actionFct;
+	static state_t m_fromState;
+	static state_t m_toState;
+	static APT::CJsonToken::TokenType m_event;
+	static const STATE_Json_TransitionTable_t* m_transitionTable;
 
 public:
 	CJsonStatmentHandler();
-	void Json_processEvent(APT::CJsonToken* token);
+	static void Json_processEvent(APT::CJsonToken* token);
 	static void Json_dispatch_DbName();
 	static void Json_dispatch_AttributeName();
 	static void Json_dispatch_AttributeValue();
