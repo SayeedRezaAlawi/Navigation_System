@@ -36,6 +36,7 @@ public:
 	t_poi getType();
 	std::string getDescription();
 	std::string poiTypeToString();
+	friend std::ostream& operator << (std::ostream& out, CPOI& wp);
 	virtual ~CPOI();
 private:
 	t_poi m_type;

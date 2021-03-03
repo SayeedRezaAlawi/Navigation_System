@@ -12,6 +12,7 @@
 #include "CNavigationSystem.h"
 #include "CJsonScanner.h"
 #include <string>
+#include "CJsonStatmentHandler.h"
 using namespace std;
 
 
@@ -27,8 +28,8 @@ int main() {
 //	csv.readData(waypointDb, poiDb,CPersistentStorage::REPLACE);
 //	waypointDb.print();
 //	poiDb.print();
-
-	string fileName = "Json-wp.txt";
+	CJsonStatmentHandler handler;
+	string fileName = "Json-poi.txt";
 	string line;
 	ifstream file;
 	file.open(fileName);
@@ -41,154 +42,13 @@ int main() {
 			validToken = false;
 		}
 		else{
-			cout << "current Token is: " << token->str() << endl;
-//			switch(token->getType()){
-//			case APT::CJsonToken::BEGIN_OBJECT:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//
-//			case APT::CJsonToken::STRING:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//
-//
-//			case APT::CJsonToken::NAME_SEPARATOR:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//			case APT::CJsonToken::BEGIN_ARRAY:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//			case APT::CJsonToken::VALUE_SEPARATOR:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//			case APT::CJsonToken::NUMBER:
-//				switch(state){
-//				case WAIT_FOR_FIRSTTOKEN:
-//
-//				case WAIT_FOR_DBNAME:
-//
-//				case WAIT_FOR_NAMESEPARATOR:
-//
-//				case WAIT_FOR_BEGINARRAY:
-//
-//				case WAIT_FOR_BEGINOBJECT:
-//
-//				case WAIT_FOR_ATTRIBUTENAME:
-//
-//				case WAIT_FOR_ATTRIBUTEVALUE:
-//
-//
-//				case WAIT_FOR_ENDARRAY:
-//
-//
-//				case WAIT_FOR_ENDOBJECT:
-//				}
-//
-//			case APT::CJsonToken::BOOL:
-//
-//
-//			case APT::CJsonToken::JSON_NULL:
-//
-//			case APT::CJsonToken::END_ARRAY:
-//
-//			case APT::CJsonToken::END_OBJECT:
-//			}
+//			cout << "current Token is: " << token->str() << endl;
+			handler.Json_processEvent(token);
 		}
+	}
+	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
+	for(auto& poi:poilist){
+		std::cout << poi;
 	}
 //	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 //	CWaypoint wp1 = CWaypoint{"WP1",20,123};

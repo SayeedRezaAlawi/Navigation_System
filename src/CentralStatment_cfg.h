@@ -10,10 +10,7 @@
 
 #include "CJsonToken.h"
 
-
-
 typedef void (*JsonParser_ActionPtr_t)();
-
 void Json_dispatch_DbName();
 void Json_dispatch_AttributeName();
 void Json_dispatch_AttributeValue();
@@ -35,38 +32,5 @@ typedef struct
 } STATE_Json_Transition_t;
 
 typedef STATE_Json_Transition_t  STATE_Json_TransitionTable_t[];
-
-//typedef struct
-//{
-//	state_t 											fromstate;
-//    STATE_stateInnerTransitionTable_t const *  const 	pInnerTransitionTable;
-//    uint16_t                          const 			size;
-//} STATE_stateOuterTransition_t;
-//
-//typedef STATE_stateOuterTransition_t  STATE_stateOuterTransitionTable_t[];
-//
-//typedef struct
-//{
-//	state_t       				state;              /**< \brief The state */
-//	JsonParser_ActionPtr_t   	actionEntry;        /**< \brief Entry Action of the state */
-//	JsonParser_ActionPtr_t   	actionExit;         /**< \brief Exit Action of the state */
-//} STATE_stateInnerAction_t;
-//
-//typedef STATE_stateInnerAction_t  STATE_stateInnerActionTable_t[];
-
-//typedef struct
-//{
-//    STATE_stateInnerActionTable_t   const * const pInnerStateTable;         /**< \brief The state */
-//	uint16_t                        const         size;                     /**< \brief Size of the inner table */
-//} STATE_stateOuterAction_t;
-//
-//enum eProcessType{
-//    PROCESS_JsonObject,
-//    PROCESS_DbObject,
-//};
-//typedef enum eProcessType Json_eProcessType_t;
-
-//extern const STATE_Json_TransitionTable_t STATE_Json_WP_Transition_Table;
-
 
 #endif /* CENTRALSTATMENT_CFG_H_ */

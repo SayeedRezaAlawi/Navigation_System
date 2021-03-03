@@ -8,28 +8,39 @@
 #ifndef CJSONSTATMENTHANDLER_H_
 #define CJSONSTATMENTHANDLER_H_
 
-#include "CentralStatment_cfg.h"
 #include "CentralStatmentHandler_cfg.h"
+#include <list>
+#include "CPOI.h"
 
-class CJson_Statment_Handler {
+class CJsonStatmentHandler {
 private:
+	static APT::CJsonToken* m_token;
+	static std::string m_dbName;
+	static std::string m_attributeName;
+	static std::string m_name;
+	static double m_latitude;
+	static double m_longitude;
+	static std::string m_type;
+	static std::string m_description;
+	static unsigned int m_noReadAttribute;
+	static std::list<CWaypoint> m_WpList;
+	static std::list<CPOI> m_PoiList;
 
 	JsonParser_ActionPtr_t m_actionFct;
 	state_t m_fromState;
 	state_t m_toState;
 	APT::CJsonToken::TokenType m_event;
-//	const STATE_Json_TransitionTable_t* m_WP_transitionTable;
-//	const STATE_Json_TransitionTable_t* m_POI_transitionTable;
-
 	const STATE_Json_TransitionTable_t* m_transitionTable;
 
 public:
-
-	/**
-	 * Constructor, taking two configuration parameters identifying the functions which will be called in error case
-	 */
-	CJson_Statment_Handler();
-	void Json_processEvent(APT::CJsonToken* token, APT::CJsonToken::TokenType  event);
+	CJsonStatmentHandler();
+	void Json_processEvent(APT::CJsonToken* token);
+	static void Json_dispatch_DbName();
+	static void Json_dispatch_AttributeName();
+	static void Json_dispatch_AttributeValue();
+	static CPOI::t_poi getPoiType(std::string type);
+	static std::list<CPOI>& getPoiList() ;
+	static std::list<CWaypoint>& getWpList() ;
 };
 
 #endif /* CJSONSTATMENTHANDLER_H_ */

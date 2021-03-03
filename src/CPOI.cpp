@@ -75,3 +75,28 @@ std::string CPOI::poiTypeToString() {
 	}
 	return typeString;
 }
+
+std::ostream& operator << (std::ostream& out, CPOI& poi){
+	int deg, mm;
+	double ss;
+
+#if SHOW_DEBUG_DATA == 1
+	out << std::endl;
+	out << "Point of Interest" << std::endl;
+	out << "=================" << std::endl;
+	out << " of type " << poi.poiTypeToString()<< " : " << poi.getDescription()<< std::endl;
+	out << poi.m_name << " on latitude = " << poi.getLatitude() << "° and on longitude = " << poi.getLongitude() << "°." << std::endl ;
+#endif
+#if SHOW_DEBUG_DATA == 2
+	out << std::endl;
+	out << "Point of Interest" << std::endl;
+	out << "=================" << std::endl;
+	out << " of type " << poi.poiTypeToString()<< " : " << poi.getDescription()<< std::endl;
+	poi.transformLatitude2degmmss(deg,mm,ss);
+	out << poi.m_name << " on latitude = " << deg << "deg " << mm << "mm " << ss << "ss ";
+	poi.transformLongitude2degmmss(deg,mm,ss);
+	out << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
+#endif
+
+	return out;
+}
