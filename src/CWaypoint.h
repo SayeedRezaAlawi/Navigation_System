@@ -39,6 +39,7 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 	double calculateDistance(const CWaypoint& wp);
 	virtual void print(int format);
+	std::string toJsonString();
 	virtual ~CWaypoint();
 protected:
 	void transformLongitude2degmmss(int& deg, int& mm, double& ss);

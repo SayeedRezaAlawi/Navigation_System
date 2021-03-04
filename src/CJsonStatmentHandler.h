@@ -31,6 +31,7 @@ private:
 	static state_t m_toState;
 	static APT::CJsonToken::TokenType m_event;
 	static const STATE_Json_TransitionTable_t* m_transitionTable;
+	static unsigned int getSizeOfTransitionTabel();
 
 public:
 	CJsonStatmentHandler();
@@ -41,6 +42,7 @@ public:
 	static CPOI::t_poi getPoiType(std::string type);
 	static std::list<CPOI>& getPoiList() ;
 	static std::list<CWaypoint>& getWpList() ;
+	static void setStatmentTable(const STATE_Json_TransitionTable_t* transitionTable);
 };
 
 #endif /* CJSONSTATMENTHANDLER_H_ */

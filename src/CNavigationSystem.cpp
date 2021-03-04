@@ -7,6 +7,8 @@
 
 #include "CNavigationSystem.h"
 #include <iostream>
+#include "CCSV.h"
+#include "CJsonPersistence.h"
 
 CNavigationSystem::CNavigationSystem() {
 	// TODO Auto-generated constructor stub
@@ -14,17 +16,47 @@ CNavigationSystem::CNavigationSystem() {
 }
 
 void CNavigationSystem::run() {
+	unsigned int choice = 0;
+	while(true){
+		std::cout << "Please select your persistent storage type (1- CSV stream , 2- Json stream)"
+				<< std::endl;
+		std::cin >> choice;
+		if(choice == 1){
+			m_PersistentStorage = new CCSV;
+			break;
+		}
+		else if(choice == 2){
+			m_PersistentStorage = new CJsonPersistence();
+			break;
+		}
+		else{
+			std::cout << "Wrong storage is selected, please try again" << std::endl;
+		}
+	}
 	createDatabases();
-//	m_CSV.setMediaName("CSV4");
-////	m_CSV.writeData(m_WpDatabase,m_PoiDatabase);
-//	m_CSV.readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
-//	m_PoiDatabase.print();
-//	m_WpDatabase.print();
 
-	m_JsonStream.setMediaName("Json-both.txt");
-	m_JsonStream.readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
-	m_PoiDatabase.print();
-	m_WpDatabase.print();
+	if(choice == 1){
+		m_PersistentStorage->setMediaName("CSV4");
+		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
+		m_PoiDatabase.print();
+		m_WpDatabase.print();
+	}
+
+	else if(choice == 2){
+		m_PersistentStorage->setMediaName("Json-both.txt");
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
+		m_PoiDatabase.print();
+		m_WpDatabase.print();
+		std::cout << std::endl << std::endl;
+		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
+		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
+
+		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
+		m_PoiDatabase.print();
+		m_WpDatabase.print();
+	}
 //	enterRoute();
 	/**
 	 * print the route defined
@@ -92,11 +124,11 @@ void CNavigationSystem::createDatabases() {
 }
 
 void CNavigationSystem::writeToFile() {
-	m_CSV.writeData(m_WpDatabase,m_PoiDatabase);
+	m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
 }
 
 void CNavigationSystem::readFromFile() {
-	m_CSV.readData(m_WpDatabase,m_PoiDatabase,CPersistentStorage::REPLACE);
+	m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase,CPersistentStorage::REPLACE);
 }
 
 CNavigationSystem::~CNavigationSystem() {

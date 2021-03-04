@@ -11,7 +11,6 @@
 #include <algorithm>
 
 CCSV::CCSV() {
-	// TODO Auto-generated constructor stub
 
 }
 

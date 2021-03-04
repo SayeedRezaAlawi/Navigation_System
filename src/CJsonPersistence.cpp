@@ -16,8 +16,64 @@ void CJsonPersistence::setMediaName(std::string name) {
 
 bool CJsonPersistence::writeData(const CWpDatabase &waypointDb,
 		const CPoiDatabase &poiDb) {
+	bool isFileWirteSuccessful = false;
 
-	return true;
+		std::ofstream file;
+		CWpDatabase::Waypoin_map Wp_map = waypointDb.getWaypoints();
+		CWpDatabase::Waypoin_map::iterator it;
+		file.open(m_fileName);
+		if(file.is_open()){
+			for(it=Wp_map.begin();it!=Wp_map.end();it++){
+				if (it==Wp_map.begin())
+				{
+					file<< "{" << "\n"  << "\"waypoints\"" << ":" <<  "[";
+
+				}
+				file << "\n" << "{" << "\n" << "\""  << "name"<< "\"" << ":" << "\"" << (*it).second.getName() << "\""
+				<< "," << "\n" << "\"" << "latitude"<< "\"" << ":" << (*it).second.getLatitude()
+				<< "," << "\n" << "\"" << "longitude"<< "\"" << ":" << (*it).second.getLongitude()
+				<< "," << "\n" << "}";
+				if(it == --Wp_map.end())
+				{
+					file<<"\n"<<"]"<<",";
+				}
+				else{
+					file<<",";
+				}
+			}
+
+		CPoiDatabase::POI_map Poi_map = poiDb.getPois();
+		CPoiDatabase::POI_map::iterator poi_it;
+		for(poi_it=Poi_map.begin();poi_it!=Poi_map.end();poi_it++){
+			if (poi_it==Poi_map.begin())
+			{
+				file<<  "\n" << "\"pois\"" << ":"  << "[";
+
+			}
+			file << "\n" << "{" << "\n" << "\""  << "\"" << "name"<< "\"" << ":" << (*poi_it).second.getName() << "\""
+					<< "," << "\n" << "\"" << "latitude"<< "\"" << ":" << (*poi_it).second.getLatitude() << "," << "\n"
+					<< "\"" << "longitude"<< "\"" << ":" << (*poi_it).second.getLongitude() << "," << "\n"
+					<< "\"" << "type"<< "\"" << ":" <<  "\"" << (*poi_it).second.poiTypeToString() << "\""
+					<< "," << "\n" << "\"" << "description"<< "\"" << ":"
+					<< "\"" << (*poi_it).second.getDescription() << "\"" << "," << "\n" << "}";
+
+
+			if(poi_it == --Poi_map.end())
+			{
+				file<<"\n"<<"]"<<" ";
+			}
+			else{
+				file<<",";
+			}
+		}
+		file<<"\n"<<"}";
+		isFileWirteSuccessful = true;
+		file.close();
+		}
+		else{
+			std::cout << "EROR: Write failed"<<std::endl;
+		}
+	return isFileWirteSuccessful;
 }
 
 bool CJsonPersistence::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,

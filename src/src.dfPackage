@@ -179,6 +179,7 @@ class __options {
 <oigroup:<oiref:cpp#Class#STATE_Json_Transition_t:oiref>=1160,910,200,155,1:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CPoiDatabase#m_POI:oiref>=1040,189,872,189:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CGPSSensor:oiref><Autodependency><oiref:cpp#Class#CWaypoint:oiref>=43,460,381,136:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CNavigationSystem:oiref><Autodependency><oiref:cpp#Class#CCSV:oiref>=508,900,962,784:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#STATE_Json_Transition_t#fromState:oiref>=1160,1015,1090,1015:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CNavigationSystem:oiref><Autodependency><oiref:cpp#Class#CPOI:oiref>=445,900,1126,193:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#APT::CJsonScanner#lnkCJsonToken:oiref>=1818,268,1742,320:oigroup>
@@ -195,7 +196,7 @@ class __options {
 <oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_CSV:oiref>=508,900,962,784:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#CJsonStatmentHandler:oiref>=1243,634,1681,634:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_route:oiref>=438,900,438,740:oigroup>
-<oigroup:Autodependency<oiref:cpp#Class#CPersistentStorage:oiref><Autodependency><oiref:cpp#Class#CPoiDatabase:oiref>=1012,300,1288,201:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CPersistentStorage:oiref><Autodependency><oiref:cpp#Class#CPoiDatabase:oiref>=666,401,1288,201:oigroup>
 <oigroup:<oiref:cpp#Class#CJsonPersistence:oiref>=1100,540,143,158,1:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_WpList:oiref>=1722,570,755,136:oigroup>
 <oigroup:<oiref:cpp#Class#CWpDatabase:oiref>=1420,-110,177,190,1:oigroup>
@@ -204,10 +205,12 @@ class __options {
 <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CRoute#m_pPoiDatabase:oiref>=1198,192,28,16,0:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CPoiDatabase:oiref><Autodependency><oiref:cpp#Class#CPOI:oiref>=1240,102,1212,102:oigroup>
 <oigroup:<oiref:cpp#Class#CGPSSensor:oiref>=-50,460,186,117,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CNavigationSystem#m_PersistentStorage:oiref>=602,550,28,16,0:oigroup>
 <oigroup:<oiref:cpp#Extends#jsonFlexLexer#FlexLexer:oiref>=2090,1020,1797,1050:oigroup>
 <oigroup:<oiref:cpp#Extends#CPOI#CWaypoint:oiref>=1040,37,790,37:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_token:oiref>=1804,570,1804,494:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonStatmentHandler:oiref><Autodependency><oiref:cpp#Class#APT::CJsonValueToken:oiref>=1681,736,1399,736:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CNavigationSystem:oiref><Autodependency><oiref:cpp#Class#CJsonPersistence:oiref>=524,900,1171,698:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#FlexLexer:oiref><Autodependency><oiref:cpp#Class#yy_buffer_state:oiref>=1720,1257,1590,1257:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#jsonFlexLexer:oiref><Autodependency><oiref:cpp#Class#yy_buffer_state:oiref>=2140,1020,1509,1130:oigroup>
 <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_PoiList:oiref>=1172,193,26,16,0:oigroup>
@@ -220,16 +223,17 @@ class __options {
 <oigroup:<oiref:cpp#Class#state:oiref>=890,820,200,267,1:oigroup>
 <oigroup:<oiref:cpp#Class#APT::CJsonToken:oiref>=1700,320,127,174,1:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#STATE_Json_Transition_t#toState:oiref>=1160,965,1090,965:oigroup>
-<oigroup:<oiref:cpp#Extends#CCSV#CPersistentStorage:oiref>=996,530,996,449:oigroup>
+<oigroup:<oiref:cpp#Extends#CCSV#CPersistentStorage:oiref>=880,540,710,540:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#CPoiDatabase:oiref>=1166,540,1349,201:oigroup>
 <oigroup:<oiref:cpp#Class#APT::CJsonValueToken:oiref>=1199,710,200,159,1:oigroup>
-<oigroup:<oiref:cpp#Class#CJsonStatmentHandler:oiref>=1681,570,200,446,1:oigroup>
+<oigroup:<oiref:cpp#Class#CJsonStatmentHandler:oiref>=1681,570,200,478,1:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#CWpDatabase:oiref>=1185,540,1507,80:oigroup>
-<oigroup:Autodependency<oiref:cpp#Class#CPersistentStorage:oiref><Autodependency><oiref:cpp#Class#CWpDatabase:oiref>=996,300,1478,80:oigroup>
+<oigroup:Autodependency<oiref:cpp#Class#CPersistentStorage:oiref><Autodependency><oiref:cpp#Class#CWpDatabase:oiref>=623,401,1471,80:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#CPOI:oiref>=1147,540,1147,193:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_toState:oiref>=1681,915,1090,915:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#CWaypoint:oiref>=1115,540,630,136:oigroup>
 <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#APT::CJsonScanner#token:oiref>=1752,300,28,16,0:oigroup>
+<oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_PersistentStorage:oiref>=442,900,645,550:oigroup>
 <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_token:oiref>=1772,494,28,16,0:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CJsonStatmentHandler#m_fromState:oiref>=1681,867,1090,867:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_PoiDatabase:oiref>=492,900,1060,490,1312,201:oigroup>
@@ -238,10 +242,10 @@ class __options {
 <oigroup:<oiref:cpp#Class#jsonFlexLexer:oiref>=1990,110,200,910,1:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CCSV:oiref><Autodependency><oiref:cpp#Class#CPOI:oiref>=1008,530,1133,193:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CJsonPersistence:oiref><Autodependency><oiref:cpp#Class#APT::CJsonScanner:oiref>=1204,540,1753,268:oigroup>
-<oigroup:<oiref:cpp#Extends#CJsonPersistence#CPersistentStorage:oiref>=1131,540,1044,449:oigroup>
+<oigroup:<oiref:cpp#Extends#CJsonPersistence#CPersistentStorage:oiref>=1100,568,710,514:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CNavigationSystem:oiref><Autodependency><oiref:cpp#Class#CWaypoint:oiref>=430,900,430,136:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#APT::CJsonScanner#token:oiref>=1831,268,1784,320:oigroup>
-<oigroup:<oiref:cpp#Class#CNavigationSystem:oiref>=340,900,200,302,1:oigroup>
+<oigroup:<oiref:cpp#Class#CNavigationSystem:oiref>=340,900,200,286,1:oigroup>
 <oigroup:Autodependency<oiref:cpp#Class#CCSV:oiref><Autodependency><oiref:cpp#Class#CWpDatabase:oiref>=1032,530,1492,80:oigroup>
 <oigroup:<oiref:cpp#Class#CCSV:oiref>=880,530,165,254,1:oigroup>
 <oigroup:<oiref:cpp#Class#CPOI:oiref>=1040,-61,172,254,1:oigroup>
@@ -252,7 +256,7 @@ class __options {
 <oigroup:<oiref:cpp#Extends#APT::CJsonValueToken#APT::CJsonToken:oiref>=1299,710,1725,494:oigroup>
 <oigroup:MemberLink#<oiref:cpp#Member#CNavigationSystem#m_GPSSensor:oiref>=358,900,43,577:oigroup>
 <oigroup:Composite#supplierCardinality#MemberLink#<oiref:cpp#Member#CRoute#m_pWpDatabase:oiref>=1378,75,28,16,0:oigroup>
-<oigroup:<oiref:cpp#Class#CPersistentStorage:oiref>=980,300,130,149,1:oigroup>
+<oigroup:<oiref:cpp#Class#CPersistentStorage:oiref>=580,401,130,149,1:oigroup>
 */
 class __positions {
 }

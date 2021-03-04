@@ -52,7 +52,7 @@ CJsonStatmentHandler::CJsonStatmentHandler() {
 void CJsonStatmentHandler::Json_processEvent(APT::CJsonToken* token) {
 	m_token = token;
 	m_event = token->getType();
-	int tableSize = 18;
+	int tableSize = getSizeOfTransitionTabel();
 	for (uint16_t i = 0; i < tableSize; i++)
 	{
 		if ((*m_transitionTable)[i].event == m_event)
@@ -87,6 +87,12 @@ void CJsonStatmentHandler::Json_dispatch_AttributeName() {
 
 std::list<CPOI>& CJsonStatmentHandler::getPoiList() {
 	return m_PoiList;
+}
+
+unsigned int CJsonStatmentHandler::getSizeOfTransitionTabel() {
+	int tableSize= sizeof(STATE_Json_Transition_t);
+	int arrayTableSize = sizeof(STATE_Json_Transition_Table);
+	return arrayTableSize/tableSize;
 }
 
 std::list<CWaypoint>& CJsonStatmentHandler::getWpList() {
@@ -167,4 +173,8 @@ CPOI::t_poi CJsonStatmentHandler::getPoiType(std::string type) {
 //		result = false;
 	}
 	return poi_type;
+}
+
+void CJsonStatmentHandler::setStatmentTable(
+		const STATE_Json_TransitionTable_t *transitionTable) {
 }

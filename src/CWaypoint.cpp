@@ -128,6 +128,11 @@ void CWaypoint::transformLatitude2degmmss(int &deg, int &mm, double &ss) {
 CWaypoint::~CWaypoint() {
 }
 
+std::string CWaypoint::toJsonString() {
+//	std::string str;
+//	str = "{"
+}
+
 std::ostream& operator << (std::ostream& out, CWaypoint& wp){
 	int deg, mm;
 	double ss;
