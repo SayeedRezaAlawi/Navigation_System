@@ -17,6 +17,7 @@
 #include "iostream"
 #include "CCSV.h"
 #include "CPersistentStorage.h"
+#include "CJsonPersistence.h"
 
 class CNavigationSystem {
 private:
@@ -25,6 +26,7 @@ private:
 	CPoiDatabase m_PoiDatabase;
 	CWpDatabase m_WpDatabase;
 	CCSV m_CSV;
+	CJsonPersistence m_JsonStream;
 //	CPersistentStorage* m_pPersistentStorgage;
 	void enterRoute();
 	void printRoute();

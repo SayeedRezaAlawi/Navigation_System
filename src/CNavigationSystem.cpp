@@ -15,9 +15,14 @@ CNavigationSystem::CNavigationSystem() {
 
 void CNavigationSystem::run() {
 	createDatabases();
-	m_CSV.setMediaName("CSV4");
-//	m_CSV.writeData(m_WpDatabase,m_PoiDatabase);
-	m_CSV.readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
+//	m_CSV.setMediaName("CSV4");
+////	m_CSV.writeData(m_WpDatabase,m_PoiDatabase);
+//	m_CSV.readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
+//	m_PoiDatabase.print();
+//	m_WpDatabase.print();
+
+	m_JsonStream.setMediaName("Json-both.txt");
+	m_JsonStream.readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
 	m_PoiDatabase.print();
 	m_WpDatabase.print();
 //	enterRoute();

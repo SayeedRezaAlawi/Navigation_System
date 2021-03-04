@@ -19,8 +19,8 @@ using namespace std;
 
 int main() {
 
-//	CNavigationSystem navObj;
-//	navObj.run();
+	CNavigationSystem navObj;
+	navObj.run();
 //	CWpDatabase waypointDb;
 //	CPoiDatabase poiDb;
 //	CCSV csv;
@@ -29,32 +29,32 @@ int main() {
 //	waypointDb.print();
 //	poiDb.print();
 //	CJsonStatmentHandler handler;
-	string fileName = "Json-both.txt";
-	string line;
-	ifstream file;
-	file.open(fileName);
-	APT::CJsonScanner scanner(file);
-	bool validToken= true;
-	while(validToken == true){
-	APT::CJsonToken* token;
-	token = scanner.nextToken();
-		if(token == NULL){
-			validToken = false;
-		}
-		else{
-//			cout << "current Token is: " << token->str() << endl;
-//			handler.Json_processEvent(token);
-			CJsonStatmentHandler::Json_processEvent(token);
-		}
-	}
-	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();
-	for(auto& wp:wplist){
-		std::cout << wp;
-	}
-	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
-	for(auto& poi:poilist){
-		std::cout << poi;
-	}
+//	string fileName = "Json-both.txt";
+//	string line;
+//	ifstream file;
+//	file.open(fileName);
+//	APT::CJsonScanner scanner(file);
+//	bool validToken= true;
+//	while(validToken == true){
+//	APT::CJsonToken* token;
+//	token = scanner.nextToken();
+//		if(token == NULL){
+//			validToken = false;
+//		}
+//		else{
+////			cout << "current Token is: " << token->str() << endl;
+////			handler.Json_processEvent(token);
+//			CJsonStatmentHandler::Json_processEvent(token);
+//		}
+//	}
+//	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();
+//	for(auto& wp:wplist){
+//		std::cout << wp;
+//	}
+//	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
+//	for(auto& poi:poilist){
+//		std::cout << poi;
+//	}
 //	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 //	CWaypoint wp1 = CWaypoint{"WP1",20,123};
 //	std::cout << wp1;
