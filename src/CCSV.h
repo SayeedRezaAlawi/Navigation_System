@@ -7,9 +7,10 @@
 
 #ifndef CCSV_H_
 #define CCSV_H_
-#include "CWpDatabase.h"
-#include "CPoiDatabase.h"
+//#include "CWpDatabase.h"
+//#include "CPoiDatabase.h"
 #include "CPersistentStorage.h"
+#include "CDatabase.h"
 
 class CCSV: public CPersistentStorage {
 private:
@@ -22,8 +23,8 @@ private:
 public:
 	CCSV();
 	void setMediaName(std::string name);
-	bool writeData (const CWpDatabase& waypointDb,const CPoiDatabase& poiDb);
-	bool readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb,CPersistentStorage::MergeMode_t mode);
+	bool writeData (const CDatabase<CWaypoint>& waypointDb,const CDatabase<CPOI>& poiDb);
+	bool readData (CDatabase<CWaypoint>& waypointDb, CDatabase<CPOI>& poiDb,CPersistentStorage::MergeMode_t mode);
 	enum errorType{
 		WRONGDELIMITER,
 		TOOFEWFIELDS,

@@ -23,18 +23,18 @@ CRoute::CRoute(CRoute &origin) {
 	this->m_pWpDatabase = origin.m_pWpDatabase;
 }
 
-void CRoute::connectToPoiDatabase(CPoiDatabase *pPoiDB) {
+void CRoute::connectToPoiDatabase(CDatabase<CPOI> *pPoiDB) {
 	m_pPoiDatabase = pPoiDB;
 }
 
-void CRoute::connectToWpDatabase(CWpDatabase* pWpDB){
+void CRoute::connectToWpDatabase(CDatabase<CWaypoint>* pWpDB){
 	m_pWpDatabase = pWpDB;
 }
 
 void CRoute::addWaypoint(std::string WpName) {
 	CWaypoint* ptrToWpDB;
 	if(m_pWpDatabase != NULL){
-		ptrToWpDB = m_pWpDatabase->getPointerToWp(WpName);
+		ptrToWpDB = m_pWpDatabase->get(WpName);
 		if(ptrToWpDB  != NULL){
 			m_pRoute.push_back(ptrToWpDB);
 			m_nextWp++;
@@ -51,7 +51,7 @@ void CRoute::addWaypoint(std::string WpName) {
 void CRoute::addPoi(std::string namePoi) {
 	CPOI* ptrToPoiDB =NULL;
 	if(m_pPoiDatabase != NULL){
-		ptrToPoiDB  = m_pPoiDatabase->getPointerToPoi(namePoi);
+		ptrToPoiDB  = m_pPoiDatabase->get(namePoi);
 		if(ptrToPoiDB  != NULL){
 			m_pRoute.push_back(ptrToPoiDB);
 			m_nextPoi++;
@@ -116,12 +116,12 @@ void CRoute::addPoi(std::string namePoi, std::string afterWp) {
 	CPOI* ptrTpPoi;
 	if(m_pPoiDatabase != NULL)
 	{
-		ptrTpPoi = m_pPoiDatabase->getPointerToPoi(namePoi);
+		ptrTpPoi = m_pPoiDatabase->get(namePoi);
 		if(ptrTpPoi != NULL){
 			CWayPointList::reverse_iterator re_it;
 
 			for(re_it = m_pRoute.rbegin(); re_it != m_pRoute.rend() && !MatchFound; ++re_it){
-				if(((*re_it)->getName() == afterWp) && (m_pPoiDatabase->getPointerToPoi((*re_it)->getName()) == NULL)){
+				if(((*re_it)->getName() == afterWp) && (m_pPoiDatabase->get((*re_it)->getName()) == NULL)){
 					m_pRoute.insert(re_it.base(),ptrTpPoi);
 					m_nextPoi++;
 					MatchFound=true;

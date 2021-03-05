@@ -12,8 +12,9 @@
 #include <list>
 #include "CWaypoint.h"
 #include "CPOI.h"
-#include "CPoiDatabase.h"
-#include "CWpDatabase.h"
+//#include "CPoiDatabase.h"
+//#include "CWpDatabase.h"
+#include "CDatabase.h"
 
 
 #define DEFAULT_VALUE_FOR_NO_POI 0xFFFF
@@ -22,8 +23,8 @@ public:
 	typedef std::list<CWaypoint*> CWayPointList;
 	CRoute();
 	CRoute(CRoute& origin);
-	void connectToPoiDatabase(CPoiDatabase* pPoiDB);
-	void connectToWpDatabase(CWpDatabase* pWpDB);
+	void connectToPoiDatabase(CDatabase<CPOI>* pPoiDB);
+	void connectToWpDatabase(CDatabase<CWaypoint>* pWpDB);
 	void addWaypoint(std::string WpName);
 	void addPoi(std::string namePoi);
 	void addPoi(std::string namePoi, std::string afterWp);
@@ -40,8 +41,8 @@ private:
 //	CPOI** m_pPoi;
 //	unsigned int m_maxPoi;
 	unsigned int m_nextPoi;
-	CWpDatabase* m_pWpDatabase;
-	CPoiDatabase* m_pPoiDatabase;
+	CDatabase<CWaypoint>* m_pWpDatabase;
+	CDatabase<CPOI>* m_pPoiDatabase;
 	CWayPointList m_pRoute;
 };
 

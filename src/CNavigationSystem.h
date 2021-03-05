@@ -10,21 +10,24 @@
 
 #include "CGPSSensor.h"
 #include "CRoute.h"
-#include "CPoiDatabase.h"
-#include "CWpDatabase.h"
+//#include "CPoiDatabase.h"
+//#include "CWpDatabase.h"
 #include "CPOI.h"
 #include "CWaypoint.h"
 #include "iostream"
 //#include "CCSV.h"
 #include "CPersistentStorage.h"
 //#include "CJsonPersistence.h"
+#include "CDatabase.h"
 
 class CNavigationSystem {
 private:
 	CGPSSensor m_GPSSensor;
 	CRoute m_route;
-	CPoiDatabase m_PoiDatabase;
-	CWpDatabase m_WpDatabase;
+	CDatabase<CPOI> m_PoiDatabase;
+	CDatabase<CWaypoint> m_WpDatabase;
+//	CPoiDatabase m_PoiDatabase;
+//	CWpDatabase m_WpDatabase;
 //	CCSV m_CSV;
 //	CJsonPersistence m_JsonStream;
 	CPersistentStorage* m_PersistentStorage;

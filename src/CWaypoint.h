@@ -38,7 +38,7 @@ public:
 	const std::string& getName() const;
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 	double calculateDistance(const CWaypoint& wp);
-	virtual void print(int format);
+	virtual void print(int format = 2);
 	std::string toJsonString();
 	virtual ~CWaypoint();
 protected:

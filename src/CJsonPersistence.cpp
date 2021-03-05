@@ -14,13 +14,12 @@ void CJsonPersistence::setMediaName(std::string name) {
 	m_fileName = name;
 }
 
-bool CJsonPersistence::writeData(const CWpDatabase &waypointDb,
-		const CPoiDatabase &poiDb) {
+bool CJsonPersistence::writeData(const CDatabase<CWaypoint>& waypointDb,const CDatabase<CPOI>& poiDb) {
 	bool isFileWirteSuccessful = false;
 
 		std::ofstream file;
-		CWpDatabase::Waypoin_map Wp_map = waypointDb.getWaypoints();
-		CWpDatabase::Waypoin_map::iterator it;
+		std::map<std::string, CWaypoint> Wp_map = waypointDb.getReferenceToMap();
+		std::map<std::string, CWaypoint>::iterator it;
 		file.open(m_fileName);
 		if(file.is_open()){
 			for(it=Wp_map.begin();it!=Wp_map.end();it++){
@@ -42,8 +41,8 @@ bool CJsonPersistence::writeData(const CWpDatabase &waypointDb,
 				}
 			}
 
-		CPoiDatabase::POI_map Poi_map = poiDb.getPois();
-		CPoiDatabase::POI_map::iterator poi_it;
+		std::map<std::string, CPOI> Poi_map = poiDb.getReferenceToMap();
+		std::map<std::string, CPOI>::iterator poi_it;
 		for(poi_it=Poi_map.begin();poi_it!=Poi_map.end();poi_it++){
 			if (poi_it==Poi_map.begin())
 			{
@@ -76,8 +75,7 @@ bool CJsonPersistence::writeData(const CWpDatabase &waypointDb,
 	return isFileWirteSuccessful;
 }
 
-bool CJsonPersistence::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,
-		CPersistentStorage::MergeMode_t mode) {
+bool CJsonPersistence::readData(CDatabase<CWaypoint>& waypointDb, CDatabase<CPOI>& poiDb,CPersistentStorage::MergeMode_t mode) {
 	if(mode == CPersistentStorage::REPLACE){
 		waypointDb.clearDb();
 		poiDb.clearDb();
@@ -99,13 +97,13 @@ bool CJsonPersistence::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,
 	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();
 	for(auto& wp:wplist){
 //		std::cout << wp;
-		waypointDb.addWaypoint(wp);
+		waypointDb.add(wp.getName(), wp);
 	}
 	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
 	for(auto& poi:poilist){
 //		std::cout << poi;
-		poiDb.addPoi(poi.getType(), poi.getName(),
-				poi.getDescription(),poi.getLatitude(), poi.getLongitude());
+		poiDb.add(poi.getName(), CPOI(poi.getType(), poi.getName(),
+				poi.getDescription(),poi.getLatitude(), poi.getLongitude()));
 	}
 	return true;
 }

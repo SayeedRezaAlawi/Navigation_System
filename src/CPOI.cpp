@@ -30,6 +30,7 @@ CPOI::CPOI(t_poi type, std::string name, std::string description,
 }
 
 void CPOI::print() {
+	std::cout << std::endl;
 	std::cout << "Point of Interest" << std::endl;
 	std::cout << "=================" << std::endl;
 	std::cout << " of type " << poiTypeToString() << " : " << this->m_description << std::endl;
@@ -85,7 +86,9 @@ std::ostream& operator << (std::ostream& out, CPOI& poi){
 	out << "Point of Interest" << std::endl;
 	out << "=================" << std::endl;
 	out << " of type " << poi.poiTypeToString()<< " : " << poi.getDescription()<< std::endl;
-	out << poi.m_name << " on latitude = " << poi.getLatitude() << "° and on longitude = " << poi.getLongitude() << "°." << std::endl ;
+	out << poi.m_name << " on latitude = " << poi.getLatitude() << "° and on longitude = " <<
+			poi.getLongitude() << "°." << std::endl ;
+	out << std::endl;
 #endif
 #if SHOW_DEBUG_DATA == 2
 	out << std::endl;

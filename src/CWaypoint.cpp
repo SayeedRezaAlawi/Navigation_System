@@ -81,23 +81,22 @@ double CWaypoint::calculateDistance(const CWaypoint &wp) {
 }
 
 void CWaypoint::print(int format) {
-//	switch(format){
-//	case 1: std::cout << this->m_name << " on latitude = " << this->m_latitude << " and on longitude = " << this->m_longitude << std::endl;break;
-//	case 2:{
-//		int deg, mm;
-//		double ss;
-//		int deg1, mm1;
-//		double ss1;
-//		transformLatitude2degmmss(deg, mm, ss);
-//		transformLongitude2degmmss(deg1, mm1, ss1);
-//		std::cout << this->m_name << " on latitude = " << deg << "deg " << mm << "mm " << ss << "ss "<<
-//				"and" << " on longitude = " << deg1 << "deg " << mm1 << "mm " << ss1 << "ss "<< std::endl;
-//		break;
-//	}
-//	}
-//	int deg, mm;
-//	double ss;
-//
+	int deg, mm;
+	double ss;
+	switch(format){
+	case 1: std::cout << std::endl;
+			std::cout << this->m_name << " on latitude = " << this->getLatitude() <<
+			"° and on longitude = " << this->getLongitude() << "°." <<std::endl;break;
+	case 2:{
+		std::cout << std::endl;
+		this->transformLatitude2degmmss(deg,mm,ss);
+				std::cout << this->m_name << " on latitude = " << deg << "deg " << mm << "mm " << ss << "ss ";
+				this->transformLongitude2degmmss(deg,mm,ss);
+				std::cout << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
+		break;
+	}
+	}
+
 //	#if SHOW_DEBUG_DATA == 1
 //		this->transformLatitude2degmmss(deg,mm,ss);
 //		std::cout << this->m_name << " on latitude = " << this->getLatitude() << "° and on longitude = " << this->getLongitude() << "°." <<std::endl ;
@@ -108,7 +107,7 @@ void CWaypoint::print(int format) {
 //		this->transformLongitude2degmmss(deg,mm,ss);
 //		std::cout << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
 //	#endif
-		std::cout << *this;
+//		std::cout << *this;
 }
 
 void CWaypoint::transformLongitude2degmmss(int &deg, int &mm, double &ss) {
@@ -133,12 +132,13 @@ std::string CWaypoint::toJsonString() {
 //	str = "{"
 }
 
+
 std::ostream& operator << (std::ostream& out, CWaypoint& wp){
 	int deg, mm;
 	double ss;
-
 #if SHOW_DEBUG_DATA == 1
 	wp.transformLatitude2degmmss(deg,mm,ss);
+	out << std::endl;
 	out << wp.m_name << " on latitude = " << wp.getLatitude() << "° and on longitude = " << wp.getLongitude() << "°." << std::endl ;
 #endif
 #if SHOW_DEBUG_DATA == 2

@@ -16,8 +16,8 @@ private:
 	std::string m_fileName;
 public:
 	void setMediaName(std::string name);
-	bool writeData (const CWpDatabase& waypointDb,const CPoiDatabase& poiDb);
-	bool readData (CWpDatabase& waypointDb, CPoiDatabase& poiDb,CPersistentStorage::MergeMode_t mode);
+	bool writeData (const CDatabase<CWaypoint>& waypointDb,const CDatabase<CPOI>& poiDb);
+	bool readData (CDatabase<CWaypoint>& waypointDb, CDatabase<CPOI>& poiDb,CPersistentStorage::MergeMode_t mode);
 	enum errorType{
 		WRONGDELIMITER,
 		TOOFEWFIELDS,

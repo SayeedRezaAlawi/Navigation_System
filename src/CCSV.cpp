@@ -19,11 +19,11 @@ void CCSV::setMediaName(std::string name) {
 	m_PoiFileName = name + "-poi.txt";
 }
 
-bool CCSV::writeData(const CWpDatabase &waypointDb, const CPoiDatabase &poiDb) {
+bool CCSV::writeData(const CDatabase<CWaypoint>& waypointDb,const CDatabase<CPOI>& poiDb) {
 	bool isFileWirteSuccessful = false;
 
 	std::ofstream file;
-	CWpDatabase::Waypoin_map Wp_map = waypointDb.getWaypoints();
+	std::map<std::string, CWaypoint> Wp_map = waypointDb.getReferenceToMap();
 	file.open(m_WpFileName);
 	if(file.is_open()){
 		for(auto& wp: Wp_map){
@@ -37,7 +37,7 @@ bool CCSV::writeData(const CWpDatabase &waypointDb, const CPoiDatabase &poiDb) {
 	}
 
 	isFileWirteSuccessful =false;
-	CPoiDatabase::POI_map Poi_map = poiDb.getPois();
+	std::map<std::string, CPOI> Poi_map = poiDb.getReferenceToMap();
 	file.open(m_PoiFileName);
 	if(file.is_open()){
 		for(auto& poi:Poi_map){
@@ -54,7 +54,7 @@ bool CCSV::writeData(const CWpDatabase &waypointDb, const CPoiDatabase &poiDb) {
 	return isFileWirteSuccessful;
 }
 
-bool CCSV::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,CPersistentStorage::MergeMode_t mode) {
+bool CCSV::readData(CDatabase<CWaypoint>& waypointDb, CDatabase<CPOI>& poiDb,CPersistentStorage::MergeMode_t mode) {
 	if(mode == CPersistentStorage::REPLACE){
 		waypointDb.clearDb();
 		poiDb.clearDb();
@@ -89,7 +89,7 @@ bool CCSV::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,CPersistentStor
 			}
 			else{
 				readWpObj(line, name, latitude, longitude);
-				waypointDb.addWaypoint(CWaypoint{name,latitude,longitude});
+				waypointDb.add(name, CWaypoint{name,latitude,longitude});
 			}
 		}
 		isFileReadSuccessful =true;
@@ -120,7 +120,7 @@ bool CCSV::readData(CWpDatabase &waypointDb, CPoiDatabase &poiDb,CPersistentStor
 			}
 			else{
 				readPoiObj(line, type, name, descrioption, latitude, longitude);
-				poiDb.addPoi(type,name,descrioption, latitude, longitude);
+				poiDb.add(name, CPOI(type,name,descrioption, latitude, longitude));
 			}
 
 		}
