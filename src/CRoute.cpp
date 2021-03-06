@@ -89,12 +89,8 @@ double CRoute::getDistanceNextPoi(const CWaypoint &wp, CPOI &poi) {
 }
 
 void CRoute::print() {
-	std::cout << "Our Route has " << m_nextWp << " Waypoints and " << m_nextPoi << " Points of Interest" << std::endl;
-//	for(auto& position:m_pRoute){
-////		position->print(2);
-//		CPOI* pPOI = dynamic_cast<CPOI*>(position);
-//		pPOI->print();
-//	}
+	std::cout << "Our Route has " << m_nextWp << " Waypoints and "
+			<< m_nextPoi << " Points of Interest" << std::endl;
 	std::list<CWaypoint*>::iterator it;
 	for (it = m_pRoute.begin(); it != m_pRoute.end(); ++it)
 	{
@@ -107,7 +103,6 @@ void CRoute::print() {
 			dynamic_cast<CPOI*>(*it)->print();
 			std::cout<<std::endl;
 		}
-
 	}
 }
 

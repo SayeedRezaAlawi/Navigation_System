@@ -1,10 +1,3 @@
-/*
- * CDatabase.h
- *
- *  Created on: Mar 4, 2021
- *      Author: reza
- */
-
 #ifndef CDATABASE_H_
 #define CDATABASE_H_
 #include <map>
@@ -20,11 +13,8 @@ public:
 	Point_map const & getReferenceToMap() const;
 	void print();
 	void clearDb();
-	unsigned getNoAdd();
-//	virtual ~CDatabase();
 private:
 	Point_map m_data;
-	unsigned noAdd=0;
 };
 
 template<class CONTENT>
@@ -35,9 +25,6 @@ inline CDatabase<CONTENT>::CDatabase(){
 template<class CONTENT>
 inline void CDatabase<CONTENT>::add(std::string name, CONTENT const&  element){
 	m_data.insert(std::pair<std::string, CONTENT> (name, element));
-	noAdd++;
-//	std::cout << "Add operation is successfull " << std::endl;
-//	std::cout << "noAdd: " << noAdd << std::endl;
 }
 
 template<class CONTENT>
@@ -52,7 +39,6 @@ inline CONTENT* CDatabase<CONTENT>::get(std::string name) {
 		}
 
 	}
-//	PtrToPoint->print();
 	return PtrToPoint;
 }
 
@@ -69,15 +55,8 @@ inline void CDatabase<CONTENT>::clearDb(){
 template<class CONTENT>
 inline void CDatabase<CONTENT>::print(){
 	 for(auto point:m_data){
-//		 point.second.print();
-		 std::cout << point.second;
+		 point.second.print();
 	 }
 }
-
-template<class CONTENT>
-inline unsigned CDatabase<CONTENT>::getNoAdd(){
-	 return noAdd;
-}
-
 
 #endif /* CDATABASE_H_ */

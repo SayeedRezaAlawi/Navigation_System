@@ -11,7 +11,6 @@
 #include <algorithm>
 
 CCSV::CCSV() {
-
 }
 
 void CCSV::setMediaName(std::string name) {

@@ -1,10 +1,3 @@
-/*
- * CJsonStatmentHandler.h
- *
- *  Created on: Mar 3, 2021
- *      Author: reza
- */
-
 #ifndef CJSONSTATMENTHANDLER_H_
 #define CJSONSTATMENTHANDLER_H_
 

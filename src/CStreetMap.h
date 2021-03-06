@@ -1,10 +1,3 @@
-/*
- * CStreetMap.h
- *
- *  Created on: Mar 5, 2021
- *      Author: reza
- */
-
 #ifndef CSTREETMAP_H_
 #define CSTREETMAP_H_
 
@@ -24,14 +17,10 @@ public:
 	CStreetMap();
 	void add(CWaypoint const& data);
 	void add(CPOI const& data);
-	void add(std::string from, std::string to, CConnection::connection_t c);
+	void add(std::string const& from, std::string const& to, CConnection::connection_t const& c);
 	void findRoute(std::string from, std::string to);
 	void print();
-
 	virtual ~CStreetMap();
-	CDatabase<CPOI>& getPoiDatabase() ;
-	CDatabase<CWaypoint>& getWpDatabase() ;
-	CDatabase<CConnection>& getConnectionDatabase() ;
 };
 
 #endif /* CSTREETMAP_H_ */

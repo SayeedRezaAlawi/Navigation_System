@@ -1,10 +1,3 @@
-/*
- * CentralStatmentHandler_cfg.h
- *
- *  Created on: Mar 3, 2021
- *      Author: reza
- */
-
 #ifndef CENTRALSTATMENT_CFG_H_
 #define CENTRALSTATMENT_CFG_H_
 

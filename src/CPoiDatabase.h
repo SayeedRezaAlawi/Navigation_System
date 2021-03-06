@@ -1,10 +1,3 @@
-/*
- * CPoiDatabase.h
- *
- *  Created on: Feb 27, 2021
- *      Author: reza
- */
-
 #ifndef CPOIDATABASE_H_
 #define CPOIDATABASE_H_
 #include <map>

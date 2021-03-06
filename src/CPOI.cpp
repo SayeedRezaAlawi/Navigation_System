@@ -8,18 +8,6 @@
 #include "CPOI.h"
 #include <iostream>
 
-//const char* POIType_ar[] = {
-//		"Restaurant",
-//		"Touristic",
-//		"GasStation",
-//		"University",
-//		"Krankenhaus",
-//		"BusStation",
-//		"School",
-//		"Monument",
-//		"NO POI exists",
-//};
-
 CPOI::CPOI(t_poi type, std::string name, std::string description,
 		double latitude, double longitude){
 			this->m_type = type;
@@ -57,8 +45,7 @@ std::string CPOI::getDescription() {
 	return m_description;
 }
 
-CPOI::~CPOI()
-{
+CPOI::~CPOI(){
 }
 
 std::string CPOI::poiTypeToString() {
@@ -100,6 +87,5 @@ std::ostream& operator << (std::ostream& out, CPOI& poi){
 	poi.transformLongitude2degmmss(deg,mm,ss);
 	out << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
 #endif
-
 	return out;
 }

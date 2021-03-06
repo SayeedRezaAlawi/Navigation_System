@@ -1,4 +1,3 @@
-
 #line 3 "lex.json.cc"
 
 #define  YY_INT_ALIGNED short int

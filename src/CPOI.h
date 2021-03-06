@@ -1,10 +1,3 @@
-/*
- * CPOI.h
- *
- *  Created on: Feb 26, 2021
- *      Author: reza
- */
-
 #ifndef CPOI_H_
 #define CPOI_H_
 

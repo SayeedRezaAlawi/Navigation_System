@@ -1,10 +1,3 @@
-/*
- * CJsonPersistence.h
- *
- *  Created on: Mar 4, 2021
- *      Author: reza
- */
-
 #ifndef CJSONPERSISTENCE_H_
 #define CJSONPERSISTENCE_H_
 

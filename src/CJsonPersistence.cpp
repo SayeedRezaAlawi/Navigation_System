@@ -96,12 +96,10 @@ bool CJsonPersistence::readData(CDatabase<CWaypoint>& waypointDb, CDatabase<CPOI
 	}
 	std::list<CWaypoint> wplist = CJsonStatmentHandler::getWpList();
 	for(auto& wp:wplist){
-//		std::cout << wp;
 		waypointDb.add(wp.getName(), wp);
 	}
 	std::list<CPOI> poilist = CJsonStatmentHandler::getPoiList();
 	for(auto& poi:poilist){
-//		std::cout << poi;
 		poiDb.add(poi.getName(), CPOI(poi.getType(), poi.getName(),
 				poi.getDescription(),poi.getLatitude(), poi.getLongitude()));
 	}

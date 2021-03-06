@@ -41,11 +41,6 @@ void Json_dispatch_AttributeValue()
 }
 
 CJsonStatmentHandler::CJsonStatmentHandler() {
-//	m_fromState = IDLE;
-//	m_toState = IDLE;
-//	m_actionFct = 0;
-//	m_event = APT::CJsonToken::BEGIN_OBJECT;
-//	m_transitionTable = (STATE_Json_TransitionTable_t*)&STATE_Json_Transition_Table;
 }
 
 
@@ -69,7 +64,6 @@ void CJsonStatmentHandler::Json_processEvent(APT::CJsonToken* token) {
 	if (0 != m_actionFct){
 		m_actionFct();
 	}
-//	m_fromState = m_toState;
 }
 
 void CJsonStatmentHandler::Json_dispatch_DbName() {
@@ -130,18 +124,12 @@ void CJsonStatmentHandler::Json_dispatch_AttributeValue() {
 		if(m_noReadAttribute == 3){
 			m_WpList.push_back(CWaypoint{m_name, m_latitude,m_longitude});
 			m_noReadAttribute = 0;
-//			for(auto& wp:m_WpList){
-//				std::cout << wp << std::endl;
-//			}
 		}
 	}
 	if(CJsonStatmentHandler::m_dbName == "pois"){
 		if(m_noReadAttribute == 5){
 			m_PoiList.push_back(CPOI{CJsonStatmentHandler::getPoiType(m_type), m_name,m_description, m_latitude,m_longitude});
 			m_noReadAttribute = 0;
-//			for(auto& poi:m_PoiList){
-//				std::cout << poi << std::endl;
-//			}
 		}
 	}
 }

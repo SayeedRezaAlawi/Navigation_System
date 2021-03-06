@@ -12,11 +12,10 @@
 
 
 CNavigationSystem::CNavigationSystem() {
-	// TODO Auto-generated constructor stub
-
 }
 
 void CNavigationSystem::run() {
+
 //	unsigned int choice = 0;
 //	while(true){
 //		std::cout << "Please select your persistent storage type (1- CSV stream , 2- Json stream)"
@@ -59,72 +58,24 @@ void CNavigationSystem::run() {
 //		m_WpDatabase.print();
 //	}
 
-//	std::cout << "step 01: " << std::endl;
-//	//Build up the WP Pool
-//	m_map.add(CWaypoint("Amsterdam",52.3731,4.8922));
-//	m_map.add(CWaypoint("Darmstadt", 49.850,8.6527));
-//	m_map.add(CWaypoint("Berlin", 52.5166,13.4));
-//	m_map.add(CWaypoint("Wroclav", 52.21,21.03));
-//	m_map.add(CWaypoint("Moscou", 55.75, 37.4));
-//	m_map.add(CWaypoint("Prague", 50.1,14.4));\
-//	m_map.add(CWaypoint("Amsterdam",53.3731,10.8922));
-//
-//	std::cout << "step 02: " << std::endl;
-//	//Let's add some Connections
-//	m_map.add("Darmstadt", "Amsterdam", CConnection::HIGHWAY);
-////	m_map.add("Darmstadt", "Berlin", CConnection::HIGHWAY);
-//	m_map.add("Berlin", "Wroclav", CConnection::HIGHWAY);
-//	m_map.add("Wroclav", "Moscou", CConnection::HIGHWAY);
-////	m_map.add("Berlin", "Prague", CConnection::HIGHWAY);
-////	m_map.add("Darmstadt", "Prague", CConnection::HIGHWAY);
-//	m_map.add("Prague", "Moscou", CConnection::HIGHWAY);
-//
-//	std::cout << "step 03: " << std::endl;
-////	m_map.findRoute("Darmstadt", "Moscou");
+	//Build up the WP Pool
+	m_map.add(CWaypoint("Amsterdam",52.3731,4.8922));
+	m_map.add(CWaypoint("Darmstadt", 49.850,8.6527));
+	m_map.add(CWaypoint("Berlin", 52.5166,13.4));
+	m_map.add(CWaypoint("Wroclav", 52.21,21.03));
+	m_map.add(CWaypoint("Moscou", 55.75, 37.4));
+	m_map.add(CWaypoint("Prague", 50.1,14.4));
+	//Let's add some Connections
+	m_map.add("Darmstadt", "Amsterdam", CConnection::HIGHWAY);
+	m_map.add("Darmstadt", "Berlin", CConnection::HIGHWAY);
+	m_map.add("Berlin", "Wroclav", CConnection::HIGHWAY);
+	m_map.add("Wroclav", "Moscou", CConnection::HIGHWAY);
+	m_map.add("Berlin", "Prague", CConnection::HIGHWAY);
+	m_map.add("Darmstadt", "Prague", CConnection::HIGHWAY);
+	m_map.add("Prague", "Moscou", CConnection::HIGHWAY);
+
 //	m_map.print();
-//	enterRoute();
-	/**
-	 * print the route defined
-	 */
-//	printRoute();
-
-//	printDistanceCurPosNextPoi();
-
-//	m_map.add(CWaypoint("Amsterdam",52.3731,4.8922));
-//	m_map.add(CWaypoint("Darmstadt", 49.850,8.6527));
-//	m_map.add(CWaypoint("Berlin", 52.5166,13.4));
-//	m_map.add(CWaypoint("Wroclav", 52.21,21.03));
-//	m_map.add(CWaypoint("Moscou", 55.75, 37.4));
-//	m_map.add(CWaypoint("Prague", 50.1,14.4));\
-//	m_map.add(CWaypoint("Amsterdam",53.3731,10.8922));
-
-	m_WpDatabase.add("Amsterdam", CWaypoint("Amsterdam",52.3731,4.8922));
-	m_WpDatabase.add("Darmstadt", CWaypoint("Darmstadt", 49.850,8.6527));
-	m_WpDatabase.add("Berlin", CWaypoint("Berlin", 52.5166,13.4));
-	m_WpDatabase.add("Wroclav", CWaypoint("Wroclav", 52.21,21.03));
-	m_WpDatabase.add("Moscou", CWaypoint("Moscou", 55.75, 37.4));
-	m_WpDatabase.add("Prague", CWaypoint("Prague", 50.1,14.4));\
-	m_WpDatabase.add("Amsterdam", CWaypoint("Amsterdam",53.3731,10.8922));
-
-//	CConnection::connect(&m_map.getWpDatabase(),&m_map.getPoiDatabase());
-	CConnection::connect(&m_WpDatabase,&m_PoiDatabase);
-
-//	m_map.add("Darmstadt", "Amsterdam", CConnection::HIGHWAY);
-//	m_map.add("Berlin", "Wroclav", CConnection::HIGHWAY);
-//	m_map.add("Wroclav", "Moscou", CConnection::HIGHWAY);
-//	m_map.add("Prague", "Moscou", CConnection::HIGHWAY);
-
-//	std::cout << "step 02: " << std::endl;
-//	//Let's add some Connections
-	m_connectionDatabase.add("Darmstadt", CConnection("Darmstadt", "Amsterdam", CConnection::HIGHWAY));
-	m_connectionDatabase.add("Berlin", CConnection("Berlin", "Wroclav", CConnection::HIGHWAY));
-	m_connectionDatabase.add("Wroclav", CConnection("Wroclav", "Moscou", CConnection::HIGHWAY));
-	m_connectionDatabase.add("Prague", CConnection("Prague", "Moscou", CConnection::HIGHWAY));
-
-	for(auto& con:m_connectionDatabase.getReferenceToMap()){
-		con.second.print();
-	}
-//	m_map.print();
+	m_map.findRoute("Darmstadt", "Moscou");
 }
 
 void CNavigationSystem::enterRoute() {
@@ -193,6 +144,5 @@ void CNavigationSystem::readFromFile() {
 }
 
 CNavigationSystem::~CNavigationSystem() {
-	// TODO Auto-generated destructor stub
 }
 

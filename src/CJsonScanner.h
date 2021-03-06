@@ -1,10 +1,3 @@
-/*
- * CJsonScanner.h
- *
- *  Created on: 10.12.2015
- *      Author: mnl
- */
-
 #ifndef MYCODE_CJSONSCANNER_H_
 #define MYCODE_CJSONSCANNER_H_
 

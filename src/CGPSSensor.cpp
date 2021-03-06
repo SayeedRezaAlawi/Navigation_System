@@ -10,8 +10,6 @@
 #include <iostream>
 
 CGPSSensor::CGPSSensor() {
-	// TODO Auto-generated constructor stub
-
 }
 
 CWaypoint CGPSSensor::getCurrentPosition() {
@@ -32,6 +30,5 @@ CWaypoint CGPSSensor::getCurrentPosition() {
 }
 
 CGPSSensor::~CGPSSensor() {
-	// TODO Auto-generated destructor stub
 }
 

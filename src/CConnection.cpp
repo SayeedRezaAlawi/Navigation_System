@@ -12,27 +12,7 @@ CDatabase<CWaypoint>* CConnection::m_pWpDB = 0;
 CDatabase<CPOI>* CConnection::m_pPoiDB = 0;
 
 CConnection::CConnection() {
-	// TODO Auto-generated constructor stub
 
-}
-
-CConnection::CConnection(std::string from, std::string to,
-		connection_t streetType) {
-	std::map<std::string, CWaypoint> wp_map = m_pWpDB->getReferenceToMap();
-	for(auto& wp:wp_map){
-		if(wp.first == from){
-			this->m_pFrom = &wp.second;
-			break;
-		}
-	}
-	for(auto& wp:wp_map){
-		if(wp.first == to){
-			this->m_pTo = &wp.second;
-			break;
-		}
-	}
-	m_streetType = streetType;
-//	print();
 }
 
 double CConnection::getDistance() const {
@@ -47,28 +27,24 @@ CWaypoint* CConnection::getTo() const {
 	return this->m_pTo;
 }
 
-void CConnection::connect(CDatabase<CWaypoint> *pWpDB,
-		CDatabase<CPOI> *pPoiDB) {
-	CConnection::m_pWpDB = pWpDB;
-	CConnection::m_pPoiDB = pPoiDB;
+CConnection::CConnection(std::string from, std::string to,
+		connection_t streetType) {
+	m_streetType = streetType;
+	if (0 == m_pWpDB)
+	throw std::string("CCONNECTION: WayppointDB not connected!");
+	if (0 == m_pPoiDB)
+	throw std::string("CCONNECTION: PoiDB not connected!");
+	if (0 == (m_pFrom = m_pWpDB->get(from)))
+	throw std::string("CCONNECTION: From " + from + " not found");
+	if (0 == (m_pTo = m_pWpDB->get(to)))
+	throw std::string("CCONNECTION: To " + to + " not found");
+	m_streetType = streetType;
 }
 
-void CConnection::print() const{
-//	m_pFrom->print(1);
-//	m_pTo->print(1);
-//	std::cout << "m_pWpDB address: " << m_pWpDB << std::endl;
-//	std::cout << "m_pPoiDB address: " << m_pPoiDB << std::endl;
-//	std::cout << "m_pFrom->getName(): " << m_pFrom->getName() << std::endl;
-//	std::cout << "m_pTo->getName(): " << m_pTo->getName() << std::endl;
-//	std::cout << "from print this->m_pFrom: " << this->m_pFrom << std::endl;
-//	std::cout << "from print this->m_pTo: " << this->m_pTo << std::endl;
-	std::cout << std::endl;
-	std::cout << " from " << getFrom()->getName()<< " to " << getTo()->getName()<< std::endl;
-	std::cout << std::endl;
-}
-
-CConnection::~CConnection() {
-	// TODO Auto-generated destructor stub
+void CConnection::connect(CDatabase<CWaypoint>* pWpDb,
+		CDatabase<CPOI>* pPoiDb) {
+	m_pWpDB = pWpDb;
+	m_pPoiDB = pPoiDb;
 }
 
 std::ostream& operator << (std::ostream& out, CConnection& con){

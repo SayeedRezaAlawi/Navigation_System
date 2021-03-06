@@ -1,13 +1,3 @@
-/***************************************************************************
-*============= Copyright by Darmstadt University of Applied Sciences =======
-****************************************************************************
-* Filename        : CWAYPOINT.H
-* Author          :
-* Description     :
-*
-*
-****************************************************************************/
-
 #ifndef CWAYPOINT_H
 #define CWAYPOINT_H
 #include <string>
@@ -39,7 +29,6 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 	double calculateDistance(const CWaypoint& wp);
 	virtual void print(int format = 2);
-	std::string toJsonString();
 	CWaypoint& operator = (const CWaypoint& wp);
 	virtual ~CWaypoint();
 protected:

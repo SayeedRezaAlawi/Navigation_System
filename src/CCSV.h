@@ -1,14 +1,5 @@
-/*
- * CCSV.h
- *
- *  Created on: Feb 28, 2021
- *      Author: reza
- */
-
 #ifndef CCSV_H_
 #define CCSV_H_
-//#include "CWpDatabase.h"
-//#include "CPoiDatabase.h"
 #include "CPersistentStorage.h"
 #include "CDatabase.h"
 
@@ -34,7 +25,6 @@ public:
 	typedef errorType errorType_t;
 private:
 	std::string errorToString(errorType_t error);
-//	virtual ~CCSV();
 };
 
 #endif /* CCSV_H_ */

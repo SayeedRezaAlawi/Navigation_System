@@ -9,8 +9,6 @@
 #include <iostream>
 
 CWpDatabase::CWpDatabase() {
-	// TODO Auto-generated constructor stub
-
 }
 
 void CWpDatabase::addWaypoint(const CWaypoint &Wp) {
@@ -37,7 +35,6 @@ void CWpDatabase::print() {
 }
 
 CWpDatabase::~CWpDatabase() {
-	// TODO Auto-generated destructor stub
 }
 
 CWpDatabase::Waypoin_map CWpDatabase::getWaypoints() const {

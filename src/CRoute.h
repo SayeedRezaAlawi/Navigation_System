@@ -1,10 +1,3 @@
-/*
- * CRoute.h
- *
- *  Created on: Feb 27, 2021
- *      Author: reza
- */
-
 #ifndef CROUTE_H_
 #define CROUTE_H_
 
@@ -12,8 +5,6 @@
 #include <list>
 #include "CWaypoint.h"
 #include "CPOI.h"
-//#include "CPoiDatabase.h"
-//#include "CWpDatabase.h"
 #include "CDatabase.h"
 
 
@@ -35,11 +26,7 @@ public:
 	CRoute operator + (const CRoute& route);
 	virtual ~CRoute();
 private:
-//	const CWaypoint* m_pWaypoint;
-//	unsigned int m_maxWp;
 	unsigned int m_nextWp;
-//	CPOI** m_pPoi;
-//	unsigned int m_maxPoi;
 	unsigned int m_nextPoi;
 	CDatabase<CWaypoint>* m_pWpDatabase;
 	CDatabase<CPOI>* m_pPoiDatabase;

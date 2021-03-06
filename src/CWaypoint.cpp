@@ -2,23 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-/***************************************************************************
-*============= Copyright by Darmstadt University of Applied Sciences =======
-****************************************************************************
-* Filename        : CWAYPOINT.CPP
-* Author          :
-* Description     :
-*
-*
-****************************************************************************/
 
-
-//System Include Files
-
-
-//Own Include Files
-
-//Method Implementations
 
 CWaypoint::CWaypoint(std::string name, double latitude, double longitude){
 	set(name,latitude,longitude);
@@ -75,8 +59,8 @@ double CWaypoint::calculateDistance(const CWaypoint &wp) {
 	cosLatitude_1 = std::cos(this->m_latitude*DEG2RAD);
 	cosLatitude_2 = std::cos(wp.getLatitude()*DEG2RAD);
 	cosLongitudeDifference = std::cos((wp.getLongitude()*DEG2RAD) - (this->m_longitude*DEG2RAD));
-	double dist = EARTH_RADIUS * acos((sinLatitude_1 * sinLatitude_2) + cosLatitude_1 * cosLatitude_2 * cosLongitudeDifference);
-//	std::cout << "Distance between " << this->m_name << " and " << wp.m_name << ": " << dist << std::endl;
+	double dist = EARTH_RADIUS * acos((sinLatitude_1 * sinLatitude_2) +
+			cosLatitude_1 * cosLatitude_2 * cosLongitudeDifference);
 	return dist;
 }
 
@@ -96,18 +80,6 @@ void CWaypoint::print(int format) {
 		break;
 	}
 	}
-
-//	#if SHOW_DEBUG_DATA == 1
-//		this->transformLatitude2degmmss(deg,mm,ss);
-//		std::cout << this->m_name << " on latitude = " << this->getLatitude() << "° and on longitude = " << this->getLongitude() << "°." <<std::endl ;
-//	#endif
-//	#if SHOW_DEBUG_DATA == 2
-//		this->transformLatitude2degmmss(deg,mm,ss);
-//		std::cout << this->m_name << " on latitude = " << deg << "deg " << mm << "mm " << ss << "ss ";
-//		this->transformLongitude2degmmss(deg,mm,ss);
-//		std::cout << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
-//	#endif
-//		std::cout << *this;
 }
 
 void CWaypoint::transformLongitude2degmmss(int &deg, int &mm, double &ss) {
@@ -125,11 +97,6 @@ void CWaypoint::transformLatitude2degmmss(int &deg, int &mm, double &ss) {
 }
 
 CWaypoint::~CWaypoint() {
-}
-
-std::string CWaypoint::toJsonString() {
-//	std::string str;
-//	str = "{"
 }
 
 CWaypoint& CWaypoint::operator =(const CWaypoint &wp) {
@@ -153,6 +120,5 @@ std::ostream& operator << (std::ostream& out, CWaypoint& wp){
 	wp.transformLongitude2degmmss(deg,mm,ss);
 	out << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
 #endif
-
 	return out;
 }
