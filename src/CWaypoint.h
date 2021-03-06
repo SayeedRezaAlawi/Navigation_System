@@ -40,6 +40,7 @@ public:
 	double calculateDistance(const CWaypoint& wp);
 	virtual void print(int format = 2);
 	std::string toJsonString();
+	CWaypoint& operator = (const CWaypoint& wp);
 	virtual ~CWaypoint();
 protected:
 	void transformLongitude2degmmss(int& deg, int& mm, double& ss);

@@ -132,6 +132,12 @@ std::string CWaypoint::toJsonString() {
 //	str = "{"
 }
 
+CWaypoint& CWaypoint::operator =(const CWaypoint &wp) {
+	this->m_name = wp.m_name;
+	this->m_latitude = wp.m_latitude;
+	this->m_longitude = wp.m_longitude;
+	return *this;
+}
 
 std::ostream& operator << (std::ostream& out, CWaypoint& wp){
 	int deg, mm;

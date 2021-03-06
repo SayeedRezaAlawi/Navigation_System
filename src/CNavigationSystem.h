@@ -19,6 +19,8 @@
 #include "CPersistentStorage.h"
 //#include "CJsonPersistence.h"
 #include "CDatabase.h"
+#include "CStreetMap.h"
+#include "CConnection.h"
 
 class CNavigationSystem {
 private:
@@ -26,6 +28,8 @@ private:
 	CRoute m_route;
 	CDatabase<CPOI> m_PoiDatabase;
 	CDatabase<CWaypoint> m_WpDatabase;
+	CDatabase<CConnection> m_connectionDatabase;
+	CStreetMap m_map;
 //	CPoiDatabase m_PoiDatabase;
 //	CWpDatabase m_WpDatabase;
 //	CCSV m_CSV;

@@ -20,9 +20,11 @@ public:
 	Point_map const & getReferenceToMap() const;
 	void print();
 	void clearDb();
+	unsigned getNoAdd();
 //	virtual ~CDatabase();
 private:
 	Point_map m_data;
+	unsigned noAdd=0;
 };
 
 template<class CONTENT>
@@ -33,6 +35,9 @@ inline CDatabase<CONTENT>::CDatabase(){
 template<class CONTENT>
 inline void CDatabase<CONTENT>::add(std::string name, CONTENT const&  element){
 	m_data.insert(std::pair<std::string, CONTENT> (name, element));
+	noAdd++;
+//	std::cout << "Add operation is successfull " << std::endl;
+//	std::cout << "noAdd: " << noAdd << std::endl;
 }
 
 template<class CONTENT>
@@ -47,7 +52,7 @@ inline CONTENT* CDatabase<CONTENT>::get(std::string name) {
 		}
 
 	}
-	PtrToPoint->print();
+//	PtrToPoint->print();
 	return PtrToPoint;
 }
 
@@ -67,6 +72,11 @@ inline void CDatabase<CONTENT>::print(){
 //		 point.second.print();
 		 std::cout << point.second;
 	 }
+}
+
+template<class CONTENT>
+inline unsigned CDatabase<CONTENT>::getNoAdd(){
+	 return noAdd;
 }
 
 
