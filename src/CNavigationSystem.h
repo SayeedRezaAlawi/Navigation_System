@@ -1,7 +1,6 @@
 #ifndef CNAVIGATIONSYSTEM_H_
 #define CNAVIGATIONSYSTEM_H_
 
-#include "CGPSSensor.h"
 #include "CRoute.h"
 #include "CPOI.h"
 #include "CWaypoint.h"
@@ -10,10 +9,11 @@
 #include "CDatabase.h"
 #include "CStreetMap.h"
 #include "CConnection.h"
+#include "CGPSSensor.h"
 
 class CNavigationSystem {
 private:
-	CGPSSensor m_GPSSensor;
+	CGPSSensor* m_GPSSensor;
 	CRoute m_route;
 	CDatabase<CPOI> m_PoiDatabase;
 	CDatabase<CWaypoint> m_WpDatabase;

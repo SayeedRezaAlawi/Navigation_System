@@ -7,6 +7,7 @@
 
 #include "CRoute.h"
 #include <iostream>
+#include "CScreen.h"
 
 CRoute::CRoute() {
 	m_nextPoi = 0;
@@ -174,4 +175,30 @@ CRoute CRoute::operator +(const CRoute &route) {
 }
 
 CRoute::~CRoute() {
+}
+
+//void CRoute::print(CScreen *screenType) {
+//}
+
+bool CRoute::operator ==(const CRoute &rop) {
+
+	bool elementFound = false;
+
+	if (m_pRoute.size() != rop.m_pRoute.size()) return false;
+
+	for(CWayPointList::const_iterator source = m_pRoute.begin(); source != m_pRoute.end(); ++source){
+		for(CWayPointList::const_iterator dest = rop.m_pRoute.begin(); dest != rop.m_pRoute.end(); ++dest){
+#if COMPARE == BYPOINTER
+			if ((*dest) == (*source))
+				elementFound = true;
+#elif COMPARE == BYVALUE
+//			if ((*(*dest)) == (*(*source)))
+				elementFound = true;
+#else
+#error Wrong configuration of the compare directive
+#endif
+		}
+		if (!elementFound) return false;
+	}
+	return true;
 }

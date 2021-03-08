@@ -2,6 +2,9 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include "CScreen.h"
+#include "CGUIScreen.h"
+#include "CCRTScreen.h"
 
 
 CWaypoint::CWaypoint(std::string name, double latitude, double longitude){
@@ -121,4 +124,15 @@ std::ostream& operator << (std::ostream& out, CWaypoint& wp){
 	out << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
 #endif
 	return out;
+}
+
+void CWaypoint::print(int format, CScreen *screenType) {
+	if (dynamic_cast<CGUIScreen*>(screenType))
+		{
+		//The code for “printing” a POI on a GUI screen
+		}
+		else if (dynamic_cast<CCRTScreen*>(screenType))
+		{
+		//The code for “printing” a POI on a CRT screen
+		}
 }

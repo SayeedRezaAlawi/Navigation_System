@@ -1,3 +1,4 @@
+class CScreen;
 #ifndef CPOI_H_
 #define CPOI_H_
 
@@ -24,7 +25,8 @@ public:
 
 	CPOI();
 	CPOI(t_poi type, std::string name, std::string description, double latitude, double longitude);
-	void print();
+	void print(int format = 2);
+	void print(int format, CScreen* screenType);
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude, t_poi& type, std::string& description);
 	t_poi getType();
 	std::string getDescription();

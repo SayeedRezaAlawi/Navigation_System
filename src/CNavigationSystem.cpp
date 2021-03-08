@@ -9,6 +9,8 @@
 #include <iostream>
 #include "CCSV.h"
 #include "CJsonPersistence.h"
+#include "CGPSSim.h"
+#include "CGPSReal.h"
 
 
 CNavigationSystem::CNavigationSystem() {
@@ -16,66 +18,83 @@ CNavigationSystem::CNavigationSystem() {
 
 void CNavigationSystem::run() {
 
-//	unsigned int choice = 0;
-//	while(true){
-//		std::cout << "Please select your persistent storage type (1- CSV stream , 2- Json stream)"
-//				<< std::endl;
-//		std::cin >> choice;
-//		if(choice == 1){
-//			m_PersistentStorage = new CCSV;
-//			break;
-//		}
-//		else if(choice == 2){
-//			m_PersistentStorage = new CJsonPersistence();
-//			break;
-//		}
-//		else{
-//			std::cout << "Wrong storage is selected, please try again" << std::endl;
-//		}
-//	}
-//	createDatabases();
-//
-//	if(choice == 1){
-//		m_PersistentStorage->setMediaName("CSV4");
-//		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
-//		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
-////		m_PoiDatabase.print();
-////		m_WpDatabase.print();
-//	}
-//
-//	else if(choice == 2){
-//		m_PersistentStorage->setMediaName("Json-both.txt");
-//		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
-////		m_PoiDatabase.print();
-////		m_WpDatabase.print();
-//		std::cout << std::endl << std::endl;
-//		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
-//		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
-//
-//		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
-//		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
+	unsigned int streamChoice = 0;
+	unsigned int gpssensorChoice = 0;
+	while(true){
+		std::cout << "Please select your type of GPS sensor (1- Simulated sensor , 2- Real sensor)"
+				<< std::endl;
+		std::cin >> gpssensorChoice;
+		if(gpssensorChoice == 1){
+			m_GPSSensor = new CGPSSim;
+			break;
+		}
+		else if(gpssensorChoice == 2){
+			m_GPSSensor = new CGPSReal;
+			break;
+		}
+		else{
+			std::cout << "Wrong sensor type is selected, please try again" << std::endl;
+		}
+	}
+	while(true){
+		std::cout << "Please select your persistent storage type (1- CSV stream , 2- Json stream)"
+				<< std::endl;
+		std::cin >> streamChoice;
+		if(streamChoice == 1){
+			m_PersistentStorage = new CCSV;
+			break;
+		}
+		else if(streamChoice == 2){
+			m_PersistentStorage = new CJsonPersistence();
+			break;
+		}
+		else{
+			std::cout << "Wrong storage is selected, please try again" << std::endl;
+		}
+	}
+	createDatabases();
+
+	if(streamChoice == 1){
+		m_PersistentStorage->setMediaName("CSV4");
+		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::MERGE);
 //		m_PoiDatabase.print();
 //		m_WpDatabase.print();
-//	}
+	}
 
-	//Build up the WP Pool
-	m_map.add(CWaypoint("Amsterdam",52.3731,4.8922));
-	m_map.add(CWaypoint("Darmstadt", 49.850,8.6527));
-	m_map.add(CWaypoint("Berlin", 52.5166,13.4));
-	m_map.add(CWaypoint("Wroclav", 52.21,21.03));
-	m_map.add(CWaypoint("Moscou", 55.75, 37.4));
-	m_map.add(CWaypoint("Prague", 50.1,14.4));
-	//Let's add some Connections
-	m_map.add("Darmstadt", "Amsterdam", CConnection::HIGHWAY);
-	m_map.add("Darmstadt", "Berlin", CConnection::HIGHWAY);
-	m_map.add("Berlin", "Wroclav", CConnection::HIGHWAY);
-	m_map.add("Wroclav", "Moscou", CConnection::HIGHWAY);
-	m_map.add("Berlin", "Prague", CConnection::HIGHWAY);
-	m_map.add("Darmstadt", "Prague", CConnection::HIGHWAY);
-	m_map.add("Prague", "Moscou", CConnection::HIGHWAY);
+	else if(streamChoice == 2){
+		m_PersistentStorage->setMediaName("Json-both.txt");
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
+//		m_PoiDatabase.print();
+//		m_WpDatabase.print();
+		std::cout << std::endl << std::endl;
+		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
+		m_PersistentStorage->writeData(m_WpDatabase,m_PoiDatabase);
 
-//	m_map.print();
-	m_map.findRoute("Darmstadt", "Moscou");
+		m_PersistentStorage->setMediaName("JsonWrite-both.txt");
+		m_PersistentStorage->readData(m_WpDatabase,m_PoiDatabase, CPersistentStorage::REPLACE);
+		m_PoiDatabase.print();
+		m_WpDatabase.print();
+	}
+
+//	//Build up the WP Pool
+//	m_map.add(CWaypoint("Amsterdam",52.3731,4.8922));
+//	m_map.add(CWaypoint("Darmstadt", 49.850,8.6527));
+//	m_map.add(CWaypoint("Berlin", 52.5166,13.4));
+//	m_map.add(CWaypoint("Wroclav", 52.21,21.03));
+//	m_map.add(CWaypoint("Moscou", 55.75, 37.4));
+//	m_map.add(CWaypoint("Prague", 50.1,14.4));
+//	//Let's add some Connections
+//	m_map.add("Darmstadt", "Amsterdam", CConnection::HIGHWAY);
+//	m_map.add("Darmstadt", "Berlin", CConnection::HIGHWAY);
+//	m_map.add("Berlin", "Wroclav", CConnection::HIGHWAY);
+//	m_map.add("Wroclav", "Moscou", CConnection::HIGHWAY);
+//	m_map.add("Berlin", "Prague", CConnection::HIGHWAY);
+//	m_map.add("Darmstadt", "Prague", CConnection::HIGHWAY);
+//	m_map.add("Prague", "Moscou", CConnection::HIGHWAY);
+//
+////	m_map.print();
+//	m_map.findRoute("Darmstadt", "Moscou");
 }
 
 void CNavigationSystem::enterRoute() {
@@ -102,7 +121,7 @@ void CNavigationSystem::printRoute() {
 }
 
 void CNavigationSystem::printDistanceCurPosNextPoi() {
-	CWaypoint userWaypoint = m_GPSSensor.getCurrentPosition();
+	CWaypoint userWaypoint = m_GPSSensor->getCurrentPosition();
 	CPOI closestPOI;
 	double closestPOIDistance = m_route.getDistanceNextPoi(userWaypoint,closestPOI);
 

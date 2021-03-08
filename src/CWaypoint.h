@@ -1,6 +1,10 @@
+class CScreen;
 #ifndef CWAYPOINT_H
 #define CWAYPOINT_H
+
+
 #include <string>
+
 
 #define EARTH_RADIUS 6378.17
 #define LOGLEVEL 0
@@ -29,6 +33,7 @@ public:
 	void getAllDataByReference(std::string& name, double& latitude, double& longitude);
 	double calculateDistance(const CWaypoint& wp);
 	virtual void print(int format = 2);
+	virtual void print(int format, CScreen* screenType);
 	CWaypoint& operator = (const CWaypoint& wp);
 	virtual ~CWaypoint();
 protected:

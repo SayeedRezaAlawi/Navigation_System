@@ -7,6 +7,9 @@
 
 #include "CPOI.h"
 #include <iostream>
+#include "CScreen.h"
+#include "CGUIScreen.h"
+#include "CCRTScreen.h"
 
 CPOI::CPOI(t_poi type, std::string name, std::string description,
 		double latitude, double longitude){
@@ -17,7 +20,7 @@ CPOI::CPOI(t_poi type, std::string name, std::string description,
 			this->m_longitude = longitude;
 }
 
-void CPOI::print() {
+void CPOI::print(int format) {
 	std::cout << std::endl;
 	std::cout << "Point of Interest" << std::endl;
 	std::cout << "=================" << std::endl;
@@ -88,4 +91,15 @@ std::ostream& operator << (std::ostream& out, CPOI& poi){
 	out << "and" << " on longitude = " << deg << "deg " << mm << "mm " << ss << "ss "<< std::endl;
 #endif
 	return out;
+}
+
+void CPOI::print(int format, CScreen *screenType) {
+	if (dynamic_cast<CGUIScreen*>(screenType))
+	{
+	//The code for “printing” a POI on a GUI screen
+	}
+	else if (dynamic_cast<CCRTScreen*>(screenType))
+	{
+	//The code for “printing” a POI on a CRT screen
+	}
 }
